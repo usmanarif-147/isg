@@ -1,8 +1,8 @@
 <?php
 
-die("index file");
-
 use Illuminate\Http\Request;
+
+die("after request");
 
 define('LARAVEL_START', microtime(true));
 
