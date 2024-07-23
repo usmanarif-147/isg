@@ -24,6 +24,23 @@ Route::get('/storage-link', function () {
     symlink($targetFolder, $linkFolder);
 });
 
+Route::get('/storage-link-three', function () {
+    $targetFolder = storage_path('app/public');
+    $linkFolder = public_path('storage');
+
+    if (file_exists($linkFolder)) {
+        return 'The "public/storage" directory already exists.';
+    }
+
+    $success = @exec("ln -s {$targetFolder} {$linkFolder}");
+
+    if ($success === false) {
+        return 'Failed to create a storage link. Please check your server permissions or contact your hosting provider.';
+    }
+
+    return 'Storage link created';
+});
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/student.php';
