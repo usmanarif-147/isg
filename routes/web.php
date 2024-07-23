@@ -15,8 +15,7 @@ Route::get('/optimize', function () {
 
 Route::get('/storage-link', function () {
     $targetFolder = storage_path('app/public');
-    dd($_SERVER['DOCUMENT_ROOT'] . '/public/storage');
-    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/public/storage';
     symlink($targetFolder, $linkFolder);
 });
 
