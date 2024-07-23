@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\File;
 
 
 Route::get('/', function () {
@@ -28,17 +29,13 @@ Route::get('/storage-link-three', function () {
     $targetFolder = storage_path('app/public');
     $linkFolder = public_path('storage');
 
-    if (file_exists($linkFolder)) {
-        return 'The "public/storage" directory already exists.';
+    if (!File::exists($linkFolder)) {
+        File::makeDirectory($linkFolder, 0755, true);
     }
 
-    $success = @exec("ln -s {$targetFolder} {$linkFolder}");
+    File::copyDirectory($targetFolder, $linkFolder);
 
-    if ($success === false) {
-        return 'Failed to create a storage link. Please check your server permissions or contact your hosting provider.';
-    }
-
-    return 'Storage link created';
+    return 'Storage files copied to public/storage';
 });
 
 require __DIR__ . '/auth.php';
