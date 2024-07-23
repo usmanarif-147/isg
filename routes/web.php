@@ -14,8 +14,10 @@ Route::get('/optimize', function () {
 });
 
 Route::get('/storage-link', function () {
-    Artisan::call('storage:link');
-    dd("link created");
+    $targetFolder = storage_path('app/public');
+    dd($_SERVER['DOCUMENT_ROOT']);
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($targetFolder, $linkFolder);
 });
 
 require __DIR__ . '/auth.php';
