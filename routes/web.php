@@ -13,6 +13,11 @@ Route::get('/optimize', function () {
     dd("cleared");
 });
 
+Route::get('/storage-link-artisan', function () {
+    Artisan::call('storage:link');
+    dd("storage linked");
+});
+
 Route::get('/storage-link', function () {
     $targetFolder = storage_path('app/public');
     $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/public/storage';
