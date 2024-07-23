@@ -13,6 +13,11 @@ Route::get('/optimize', function () {
     dd("cleared");
 });
 
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    dd("link created");
+});
+
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/student.php';
