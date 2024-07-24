@@ -13,11 +13,13 @@ class Template extends Model
         'school_id',
         'name',
         'logo',
-        'required_fields'
+        'front_side',
+        'back_side'
     ];
 
     protected $casts = [
-        'required_fields' => 'array'
+        'front_side' => 'array',
+        'back_side' => 'array'
     ];
 
     public function school()

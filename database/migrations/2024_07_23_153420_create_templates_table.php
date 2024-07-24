@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('school_id')->constrained('users')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('logo')->nullable();
-            $table->json('required_fields');
+            $table->json('front_side');
+            $table->json('back_side');
             $table->timestamps();
         });
     }

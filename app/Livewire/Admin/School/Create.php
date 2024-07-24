@@ -57,7 +57,8 @@ class Create extends Component
             'school_id' => $school->id,
             'name' => $school->name,
             'logo' => $school->photo,
-            'required_fields' => getTemplateFields()
+            'front_side' => getTemplateFrontSide(),
+            'back_side' => getTemplateBackSide(),
         ]);
 
         RollNumberPrefix::create([

@@ -83,7 +83,7 @@ class Edit extends Component
 
     public function updateProfile()
     {
-        $data = $this->validate();
+        $this->validate();
         if ($this->profile_photo) {
             if ($this->old_profile_photo) {
                 Storage::disk('public')->delete($this->old_profile_photo);

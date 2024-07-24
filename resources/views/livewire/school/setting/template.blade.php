@@ -50,7 +50,7 @@
                                         {{ in_array($key, $selected_front_side_fields) ? 'checked' : '' }}
                                         style="border: 1px solid black; font-size: 16px">
                                     <label class="form-check-label">
-                                        {{ $key }}
+                                        {{ $field['label'] }}
                                     </label>
                                 </div>
                             @endforeach
@@ -81,7 +81,7 @@
                                         {{ in_array($key, $selected_back_side_fields) ? 'checked' : '' }}
                                         style="border: 1px solid black; font-size: 16px">
                                     <label class="form-check-label">
-                                        {{ $key }}
+                                        {{ $field['label'] }}
                                     </label>
                                 </div>
                             @endforeach

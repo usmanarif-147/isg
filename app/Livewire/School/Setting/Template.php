@@ -38,13 +38,12 @@ class Template extends Component
 
         $this->name = $template->name;
         $this->oldLogo = $template->logo;
-        $this->front_side_fields = $template->required_fields['front_side'];
-        $this->back_side_fields = $template->required_fields['back_side'];
 
-        // $this->platforms = Platform::where('status', 1)
-        // ->pluck('title', 'id');
+        $this->front_side_fields = $template->front_side;
+        $this->back_side_fields = $template->back_side;
 
-        // $this->selected_platforms = $student->platforms->pluck('id')->toArray();
+        $this->selected_front_side_fields = array_keys(array_filter($this->front_side_fields, fn ($field) => $field['enabled']));
+        $this->selected_back_side_fields = array_keys(array_filter($this->back_side_fields, fn ($field) => $field['enabled']));
     }
 
     /**
@@ -55,7 +54,7 @@ class Template extends Component
         if ($this->general) {
             return [
                 'name'    =>      ['required'],
-                'logo'    =>      ['nullable', 'image', 'mimes:jpeg,jpg,png,webp'],
+                'logo'    =>      ['required', 'image', 'mimes:jpeg,jpg,png,webp'],
             ];
         }
         if ($this->front_side) {
@@ -82,7 +81,6 @@ class Template extends Component
         $this->back_side = 0;
 
         $data = $this->validate();
-        dd($data);
 
         if ($this->logo) {
             if ($this->oldLogo) {
@@ -93,13 +91,10 @@ class Template extends Component
             $this->logo = $this->oldLogo;
         }
 
-        // User::where('id', $this->studentId)->update([
-        //     'first_name' => $this->first_name,
-        //     'last_name' => $this->last_name,
-        //     'photo' => $this->photo,
-        // ]);
-
-        // $this->reset('photo');
+        ModelsTemplate::where('id', $this->templateId)->update([
+            'name' => $this->name,
+            'logo' => $this->logo
+        ]);
 
         session()->flash('generalMessage', 'Student Details Updated Successfully.');
     }
@@ -109,15 +104,16 @@ class Template extends Component
         $this->general = 0;
         $this->front_side = 1;
         $this->back_side = 0;
-        $data = $this->validate();
-        dd($data);
+        $this->validate();
 
-        // User::where('id', $this->studentId)->update([
-        //     'email' => $this->email,
-        //     'password' => bcrypt($this->password),
-        // ]);
+        foreach ($this->front_side_fields as $key => &$field) {
+            $field['enabled'] = in_array($key, $this->selected_front_side_fields) ? 1 : 0;
+        }
 
-        // session()->flash('loginMessage', 'Student Details Updated Successfully.');
+        ModelsTemplate::where('id', $this->templateId)
+            ->update(['front_side' => $this->front_side_fields]);
+
+        session()->flash('frontSideMessage', 'Front Fields Updated Successfully.');
     }
 
     public function updateBackSideFields()
@@ -127,13 +123,15 @@ class Template extends Component
         $this->back_side = 1;
 
         $data = $this->validate();
-        dd($data);
 
-        // $user = User::where('id', $this->studentId)->first();
+        foreach ($this->back_side_fields as $key => &$field) {
+            $field['enabled'] = in_array($key, $this->selected_back_side_fields) ? 1 : 0;
+        }
 
-        // $user->platforms()->sync($this->selected_platforms);
+        ModelsTemplate::where('id', $this->templateId)
+            ->update(['back_side' => $this->back_side_fields]);
 
-        // session()->flash('platformMessage', 'Student Platforms Updated Successfully.');
+        session()->flash('backSideMessage', 'Back Side Fields Updated Successfully.');
     }
 
     public function render()

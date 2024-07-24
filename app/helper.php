@@ -2,11 +2,11 @@
 
 use Carbon\Carbon;
 
-if (!function_exists('getTemplateFields')) {
-    function getTemplateFields()
+if (!function_exists('getTemplateFrontSide')) {
+    function getTemplateFrontSide()
     {
-        return [
-            'front_side' => [
+        return
+            [
                 [
                     'enabled' => 0,
                     'label' => 'First Name',
@@ -85,90 +85,97 @@ if (!function_exists('getTemplateFields')) {
                     'options' => ['Male', 'Female', 'Other'],
                     'model' => 'gender',
                 ]
-            ],
-            'back_side' => [
-                [
-                    'enabled' => 0,
-                    'label' => 'First Name',
-                    'input_type' => 'text',
-                    'placeholder' => 'Enter First Name',
-                    'model' => 'first_name',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Last Name',
-                    'input_type' => 'text',
-                    'placeholder' => 'Enter Last Name',
-                    'model' => 'last_name',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Full Name',
-                    'input_type' => 'text',
-                    'placeholder' => 'Enter Full Name',
-                    'model' => 'full_name',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Email',
-                    'input_type' => 'email',
-                    'placeholder' => 'Enter Email',
-                    'model' => 'email',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'CNIC',
-                    'input_type' => 'text',
-                    'placeholder' => 'Enter CNIC',
-                    'model' => 'cnic',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Phone Number',
-                    'input_type' => 'text',
-                    'placeholder' => 'Enter Phone Number',
-                    'model' => 'phone_number',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Photo',
-                    'input_type' => 'file',
-                    'placeholder' => '',
-                    'model' => 'photo',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Student ID',
-                    'input_type' => 'text',
-                    'placeholder' => 'Enter Student ID',
-                    'model' => 'student_id',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Address',
-                    'input_type' => 'text',
-                    'placeholder' => 'Enter Address',
-                    'model' => 'address',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Date of Birth',
-                    'input_type' => 'date',
-                    'placeholder' => '',
-                    'model' => 'dob',
-                ],
-                [
-                    'enabled' => 0,
-                    'label' => 'Gender',
-                    'input_type' => 'select',
-                    'placeholder' => '',
-                    'options' => ['Male', 'Female', 'Other'],
-                    'model' => 'gender',
-                ]
-            ],
-        ];
+            ];
     }
 }
+
+if (!function_exists('getTemplateBackSide')) {
+    function getTemplateBackSide()
+    {
+        return
+            [
+                [
+                    'enabled' => 0,
+                    'label' => 'First Name',
+                    'input_type' => 'text',
+                    'placeholder' => 'Enter First Name',
+                    'model' => 'first_name',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Last Name',
+                    'input_type' => 'text',
+                    'placeholder' => 'Enter Last Name',
+                    'model' => 'last_name',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Full Name',
+                    'input_type' => 'text',
+                    'placeholder' => 'Enter Full Name',
+                    'model' => 'full_name',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Email',
+                    'input_type' => 'email',
+                    'placeholder' => 'Enter Email',
+                    'model' => 'email',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'CNIC',
+                    'input_type' => 'text',
+                    'placeholder' => 'Enter CNIC',
+                    'model' => 'cnic',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Phone Number',
+                    'input_type' => 'text',
+                    'placeholder' => 'Enter Phone Number',
+                    'model' => 'phone_number',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Photo',
+                    'input_type' => 'file',
+                    'placeholder' => '',
+                    'model' => 'photo',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Student ID',
+                    'input_type' => 'text',
+                    'placeholder' => 'Enter Student ID',
+                    'model' => 'student_id',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Address',
+                    'input_type' => 'text',
+                    'placeholder' => 'Enter Address',
+                    'model' => 'address',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Date of Birth',
+                    'input_type' => 'date',
+                    'placeholder' => '',
+                    'model' => 'dob',
+                ],
+                [
+                    'enabled' => 0,
+                    'label' => 'Gender',
+                    'input_type' => 'select',
+                    'placeholder' => '',
+                    'options' => ['Male', 'Female', 'Other'],
+                    'model' => 'gender',
+                ]
+            ];
+    }
+}
+
 
 if (!function_exists('defaultDateFormat')) {
     function defaultDateFormat($date)
