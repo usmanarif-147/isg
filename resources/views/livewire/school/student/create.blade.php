@@ -1,6 +1,4 @@
 <div>
-
-
     <h1 class="app-page-title">Create Student</h1>
 
     @if (session()->has('message'))

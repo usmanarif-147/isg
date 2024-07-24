@@ -1,3 +1,3 @@
 <div>
-    {{-- Stop trying to control. --}}
+    this is change password section
 </div>

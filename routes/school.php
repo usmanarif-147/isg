@@ -11,5 +11,10 @@ Route::middleware(['school'])->group(function () {
         Route::view('/students', 'school.student.students')->name('students');
         Route::view('student/create', 'school.student.create')->name('student.create');
         Route::view('student/view/{id}', 'school.student.view')->name('student.view');
+
+        // setting
+        Route::view('/settings/change-password', 'school.settings.change-password')->name('change.password');
+        Route::view('/settings/roll-number-prefix', 'school.settings.roll-number')->name('roll.number');
+        Route::view('/settings/template', 'school.settings.template')->name('template');
     });
 });

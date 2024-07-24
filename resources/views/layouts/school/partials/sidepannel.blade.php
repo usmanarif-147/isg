@@ -49,17 +49,17 @@
                     <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
                             <li class="submenu-item">
-                                <a class="submenu-link" href="#">
+                                <a class="submenu-link" href="{{ route('school.change.password') }}">
                                     Change Password
                                 </a>
                             </li>
                             <li class="submenu-item">
-                                <a class="submenu-link" href="#">
-                                    Roll #
+                                <a class="submenu-link" href="{{ route('school.roll.number') }}">
+                                    Set Roll Number Prefix
                                 </a>
                             </li>
                             <li class="submenu-item">
-                                <a class="submenu-link" href="#">
+                                <a class="submenu-link" href="{{ route('school.template') }}">
                                     Template
                                 </a>
                             </li>
