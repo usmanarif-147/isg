@@ -53,38 +53,11 @@ class Create extends Component
             'password'  => bcrypt($this->password)
         ]);
 
-        $required_fields = [
-            'front_side' => [
-                'first_name' => 0,
-                'last_name' => 0,
-                'full_name' => 0,
-                'cnic' => 0,
-                'phone_number' => 0,
-                'photo' => 0,
-                'student_id' => 0,
-                'address' => 0,
-                'dob' => 0,
-                'gender' => 0
-            ],
-            'back_side' => [
-                'first_name' => 0,
-                'last_name' => 0,
-                'full_name' => 0,
-                'cnic' => 0,
-                'phone_number' => 0,
-                'photo' => 0,
-                'student_id' => 0,
-                'address' => 0,
-                'dob' => 0,
-                'gender' => 0
-            ]
-        ];
-
         Template::create([
             'school_id' => $school->id,
             'name' => $school->name,
             'logo' => $school->photo,
-            'required_fields' => $required_fields
+            'required_fields' => getTemplateFields()
         ]);
 
         RollNumberPrefix::create([
