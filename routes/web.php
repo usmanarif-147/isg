@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');
-    dd("cleared");
+    dd("cache cleared");
 });
 
 Route::get('/storage-link-artisan', function () {
