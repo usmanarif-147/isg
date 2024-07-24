@@ -25,19 +25,6 @@ Route::get('/storage-link', function () {
     symlink($targetFolder, $linkFolder);
 });
 
-Route::get('/storage-link-three', function () {
-    $targetFolder = storage_path('app/public');
-    $linkFolder = public_path('storage');
-
-    if (!File::exists($linkFolder)) {
-        File::makeDirectory($linkFolder, 0755, true);
-    }
-
-    File::copyDirectory($targetFolder, $linkFolder);
-
-    return 'Storage files copied to public/storage';
-});
-
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 require __DIR__ . '/student.php';
