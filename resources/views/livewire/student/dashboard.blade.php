@@ -5,7 +5,7 @@
                 <p class="fs-13 light-dark">September 4, 2023</p>
                 <h3 class="text-white pt-lg-5 pt-2">Welcome back, {{ $full_name }}!</h3>
                 <p class="light-dark fs-13 m-0">
-                    {{ $about_me }}
+                    {{ $email }}
                 </p>
             </div>
             <div class="col-12 col-lg-6">

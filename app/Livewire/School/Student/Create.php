@@ -3,6 +3,7 @@
 namespace App\Livewire\School\Student;
 
 use App\Models\Platform;
+use App\Models\RollNumberPrefix;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Support\Facades\Storage;
@@ -56,12 +57,14 @@ class Create extends Component
             $this->photo = Storage::disk('public')->put('/students', $this->photo);
         }
 
+        $prefix = RollNumberPrefix::where('school_id', auth()->id())->first()->prefix;
+
         $user = User::create([
             'school_id' => auth()->id(),
             'first_name'  => $this->first_name,
             'last_name'  => $this->last_name,
             'email'  => $this->email,
-            'roll_number'  => \Str::uuid(),
+            'roll_number'  => $prefix . '_' . \Str::uuid(),
             'photo'  => $this->photo,
             'password'  => bcrypt($this->password),
             'role' => 3

@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Student\Profile;
 
-use App\Models\UserProfile;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -14,21 +14,26 @@ class Show extends Component
     public $activePlatforms = [];
 
     public
-        $about_me,
-        $full_name,
-        $profile_photo,
-        $cover_photo,
-        $bio;
+        $about_me = '',
+        $full_name = '',
+        $profile_photo = '',
+        $cover_photo = '',
+        $bio = '';
 
     public function mount()
     {
-        $student = UserProfile::where('user_id', auth()->id())->first();
 
-        $this->about_me = $student->about_me;
-        $this->full_name = $student->full_name;
-        $this->profile_photo = url('storage') . '/' . $student->profile_photo;
-        $this->cover_photo = url('storage') . '/' . $student->cover_photo;
-        $this->bio = $student->bio;
+        $student = User::where('id', auth()->id())->first();
+        if ($student->student_profile) {
+
+            $profile = $student->student_profile;
+
+            $this->about_me = $profile[0]['about_me'];
+            $this->full_name = $profile[1]['full_name'];
+            $this->bio = $profile[8]['bio'];
+            $this->profile_photo = url('storage') . '/' . $profile[9]['profile_photo'];
+            $this->cover_photo = url('storage') . '/' . $profile[10]['cover_photo'];
+        }
 
         $this->getActivePlatforms();
     }

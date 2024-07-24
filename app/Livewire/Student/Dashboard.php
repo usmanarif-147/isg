@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Student;
 
+use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -12,21 +13,19 @@ class Dashboard extends Component
     public $activePlatforms;
 
     public
-        $about_me,
+        $email,
         $full_name,
-        $profile_photo,
-        $cover_photo,
-        $bio;
+        $photo;
 
     public function mount()
     {
-        $student = UserProfile::where('user_id', auth()->id())->first();
+        // $student = UserProfile::where('user_id', auth()->id())->first();
 
-        $this->about_me = $student->about_me;
-        $this->full_name = $student->full_name;
-        $this->profile_photo = url('storage') . '/' . $student->profile_photo;
-        $this->cover_photo = url('storage') . '/' . $student->cover_photo;
-        $this->bio = $student->bio;
+        $student = User::where('id', auth()->id())->first();
+
+        $this->email = $student->email;
+        $this->full_name = $student->first_name . ' ' . $student->last_name;
+        $this->photo = url('storage') . '/' . $student->photo;
 
         $this->getActivePlatforms();
     }

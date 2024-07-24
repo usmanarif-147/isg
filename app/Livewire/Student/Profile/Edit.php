@@ -31,21 +31,26 @@ class Edit extends Component
 
     public function mount()
     {
-        $student = UserProfile::where('user_id', auth()->id())->first();
+        $student = User::where('id', auth()->id())->first();
+        if ($student->student_profile) {
 
-        $this->about_me = $student->about_me;
-        $this->full_name = $student->full_name;
-        $this->profile_photo_preview = url('storage') . '/' . $student->profile_photo;
-        $this->cover_photo_preview = url('storage') . '/' . $student->cover_photo;
-        $this->old_profile_photo = $student->profile_photo;
-        $this->old_cover_photo  = $student->cover_photo;
-        $this->cnic = $student->cnic;
-        $this->blood_group = $student->blood_group;
-        $this->phone = $student->phone;
-        $this->dob = $student->dob;
-        $this->nationality = $student->nationality;
-        $this->gender = $student->gender;
-        $this->bio = $student->bio;
+            $profile = $student->student_profile;
+
+            $this->about_me = $profile[0]['about_me'];
+            $this->full_name = $profile[1]['full_name'];
+            $this->cnic = $profile[2]['cnic'];
+            $this->blood_group = $profile[3]['blood_group'];
+            $this->phone = $profile[4]['phone'];
+            $this->dob = $profile[5]['dob'];
+            $this->nationality = $profile[6]['nationality'];
+            $this->gender = $profile[7]['gender'];
+            $this->bio = $profile[8]['bio'];
+
+            $this->old_profile_photo = $profile[9]['profile_photo'];
+            $this->old_cover_photo  = $profile[10]['cover_photo'];
+            $this->profile_photo_preview = url('storage') . '/' . $profile[9]['profile_photo'];
+            $this->cover_photo_preview = url('storage') . '/' . $profile[10]['cover_photo'];
+        }
     }
 
     /**
@@ -83,7 +88,9 @@ class Edit extends Component
 
     public function updateProfile()
     {
-        $this->validate();
+        $data = $this->validate();
+        $studentData = [];
+
         if ($this->profile_photo) {
             if ($this->old_profile_photo) {
                 Storage::disk('public')->delete($this->old_profile_photo);
@@ -97,20 +104,17 @@ class Edit extends Component
             $this->cover_photo = Storage::disk('public')->put('/students', $this->cover_photo);
         }
 
-        UserProfile::where('user_id', auth()->id())
-            ->update([
-                'about_me'      => $this->about_me,
-                'full_name'     => $this->full_name,
-                'profile_photo' => $this->profile_photo ?? $this->old_profile_photo,
-                'cover_photo'   => $this->cover_photo ?? $this->old_cover_photo,
-                'cnic'          => $this->cnic,
-                'blood_group'   => $this->blood_group,
-                'phone'         => $this->phone,
-                'dob'           => $this->dob,
-                'nationality'   => $this->nationality,
-                'gender'        => $this->gender,
-                'bio'           => $this->bio,
-            ]);
+        foreach ($data as $key => $value) {
+            if ($key == 'profile_photo') {
+                array_push($studentData, ['enabled' => 1,  $key => $this->profile_photo ?? $this->old_profile_photo]);
+            } elseif ($key == 'cover_photo') {
+                array_push($studentData, ['enabled' => 1,  $key => $this->cover_photo ?? $this->old_cover_photo]);
+            } else {
+                array_push($studentData, ['enabled' => 1,  $key => $value]);
+            }
+        }
+
+        User::where('id', auth()->id())->update(['student_profile' => $studentData]);
 
         session()->flash('message', 'Profile Updated Successfully.');
     }

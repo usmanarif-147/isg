@@ -32,6 +32,10 @@ class User extends Authenticatable
         'student_profile'
     ];
 
+    protected $casts = [
+        'student_profile' => 'array',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *

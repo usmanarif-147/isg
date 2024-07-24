@@ -2,7 +2,7 @@
     <div class="p-4 card-shadow my-4">
         <h5 class="navy-blue fw-bold">About Me</h5>
         <p class="fs-13 m-0">
-            {{ $student->about_me }}
+            {{ $about_me }}
         </p>
     </div>
     <div class="row gy-3">
@@ -19,7 +19,7 @@
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">
-                                    {{ $student->full_name }}
+                                    {{ $full_name }}
                                 </p>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">
-                                    {{ $student->cnic }}
+                                    {{ $cnic }}
                                 </p>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                 </h6>
                             </div>
                             <div>
-                                <p class="info-text fs-15 m-0">{{ $student->blood_group }}</p>
+                                <p class="info-text fs-15 m-0">{{ $blood_group }}</p>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                                 <h6 class="navy-blue fw-600 m-0">DOB:</h6>
                             </div>
                             <div>
-                                <p class="info-text fs-15 m-0">{{ $student->dob }}</p>
+                                <p class="info-text fs-15 m-0">{{ $dob }}</p>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">
-                                    {{ $student->phone }}
+                                    {{ $phone }}
                                 </p>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                 </h6>
                             </div>
                             <div>
-                                <p class="info-text fs-15 m-0">{{ $student->nationality }}</p>
+                                <p class="info-text fs-15 m-0">{{ $nationality }}</p>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                                 </h6>
                             </div>
                             <div>
-                                <p class="info-text fs-15 m-0">{{ $student->gender }}</p>
+                                <p class="info-text fs-15 m-0">{{ $gender }}</p>
                             </div>
                         </div>
                     </div>
