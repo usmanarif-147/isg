@@ -13,6 +13,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter First Name',
                     'model' => 'first_name',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -20,6 +21,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Last Name',
                     'model' => 'last_name',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -27,6 +29,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Full Name',
                     'model' => 'full_name',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -34,6 +37,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'email',
                     'placeholder' => 'Enter Email',
                     'model' => 'email',
+                    'validation_rules' => 'required|email'
                 ],
                 [
                     'enabled' => 0,
@@ -41,6 +45,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter CNIC',
                     'model' => 'cnic',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -48,6 +53,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Phone Number',
                     'model' => 'phone_number',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -55,6 +61,8 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'file',
                     'placeholder' => '',
                     'model' => 'photo',
+                    'validation_rules' => 'nullable|image|mimes:jpeg,jpg,png,webp'
+
                 ],
                 [
                     'enabled' => 0,
@@ -62,6 +70,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Student ID',
                     'model' => 'student_id',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -69,6 +78,7 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Address',
                     'model' => 'address',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -76,14 +86,16 @@ if (!function_exists('getTemplateFrontSide')) {
                     'input_type' => 'date',
                     'placeholder' => '',
                     'model' => 'dob',
+                    'validation_rules' => 'required|date|before:today'
                 ],
                 [
                     'enabled' => 0,
                     'label' => 'Gender',
                     'input_type' => 'select',
                     'placeholder' => '',
-                    'options' => ['Male', 'Female', 'Other'],
+                    'options' => ['Male', 'Female'],
                     'model' => 'gender',
+                    'validation_rules' => 'required|not_in:-1'
                 ]
             ];
     }
@@ -100,6 +112,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter First Name',
                     'model' => 'first_name',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -107,6 +120,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Last Name',
                     'model' => 'last_name',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -114,6 +128,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Full Name',
                     'model' => 'full_name',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -121,6 +136,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'email',
                     'placeholder' => 'Enter Email',
                     'model' => 'email',
+                    'validation_rules' => 'required|email'
                 ],
                 [
                     'enabled' => 0,
@@ -128,6 +144,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter CNIC',
                     'model' => 'cnic',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -135,6 +152,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Phone Number',
                     'model' => 'phone_number',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -142,6 +160,8 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'file',
                     'placeholder' => '',
                     'model' => 'photo',
+                    'validation_rules' => 'nullable|image|mimes:jpeg,jpg,png,webp'
+
                 ],
                 [
                     'enabled' => 0,
@@ -149,6 +169,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Student ID',
                     'model' => 'student_id',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -156,6 +177,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'text',
                     'placeholder' => 'Enter Address',
                     'model' => 'address',
+                    'validation_rules' => 'required|string'
                 ],
                 [
                     'enabled' => 0,
@@ -163,14 +185,16 @@ if (!function_exists('getTemplateBackSide')) {
                     'input_type' => 'date',
                     'placeholder' => '',
                     'model' => 'dob',
+                    'validation_rules' => 'required|date|before:today'
                 ],
                 [
                     'enabled' => 0,
                     'label' => 'Gender',
                     'input_type' => 'select',
                     'placeholder' => '',
-                    'options' => ['Male', 'Female', 'Other'],
+                    'options' => ['Male', 'Female'],
                     'model' => 'gender',
+                    'validation_rules' => 'required|not_in:0'
                 ]
             ];
     }

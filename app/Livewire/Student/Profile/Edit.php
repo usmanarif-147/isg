@@ -58,23 +58,38 @@ class Edit extends Component
      */
     protected function rules()
     {
+        // $rules = [
+        //     'about_me'          =>      ['sometimes', 'string', 'max:255'],
+        //     'full_name'         =>      ['sometimes', 'string', 'max:255'],
+        //     'cnic'              =>      ['sometimes', 'string', 'max:20'],
+        //     'blood_group'       =>      ['sometimes', 'string', 'max:10'],
+        //     'phone'             =>      ['sometimes', 'string', 'max:20'],
+        //     'dob'               =>      ['sometimes', 'date'],
+        //     'nationality'       =>      ['sometimes', 'string', 'max:255'],
+        //     'gender'            =>      ['sometimes', 'string', 'max:10'],
+        //     'bio'               =>      ['sometimes', 'string'],
+        //     'profile_photo'     =>      ['sometimes', 'nullable', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+        //     'cover_photo'       =>      ['sometimes', 'nullable', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+        // ];
+
         return [
-            'about_me'          =>      ['sometimes', 'string', 'max:255'],
-            'full_name'         =>      ['sometimes', 'string', 'max:255'],
-            'cnic'              =>      ['sometimes', 'string', 'max:20'],
-            'blood_group'       =>      ['sometimes', 'string', 'max:10'],
-            'phone'             =>      ['sometimes', 'string', 'max:20'],
-            'dob'               =>      ['sometimes', 'date'],
-            'nationality'       =>      ['sometimes', 'string', 'max:255'],
-            'gender'            =>      ['sometimes', 'string', 'max:10'],
-            'bio'               =>      ['sometimes', 'string'],
-            'profile_photo'     =>      ['sometimes', 'nullable', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
-            'cover_photo'       =>      ['sometimes', 'nullable', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'about_me'          =>      'sometimes|string|max:255',
+            'full_name'         =>      'sometimes|string|max:255',
+            'cnic'              =>      'sometimes|string|max:20',
+            'blood_group'       =>      'sometimes|string|max:10',
+            'phone'             =>      'sometimes|string|max:20',
+            'dob'               =>      'sometimes|date',
+            'nationality'       =>      'sometimes|string|max:255',
+            'gender'            =>      'sometimes|string|max:10',
+            'bio'               =>      'sometimes|string',
+            'profile_photo'     =>      'sometimes|nullable|mimes:jpg,jpeg,png,webp|max:4096',
+            'cover_photo'       =>      'sometimes|nullable|mimes:jpg,jpeg,png,webp|max:4096',
         ];
     }
 
     public function updated($fields)
     {
+        dd($fields);
         $this->validateOnly($fields);
     }
     public function updatedProfilePhoto()

@@ -4,6 +4,7 @@ namespace App\Livewire\School\Student;
 
 use App\Models\Platform;
 use App\Models\RollNumberPrefix;
+use App\Models\StudentCard;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Support\Facades\Storage;
@@ -67,7 +68,14 @@ class Create extends Component
             'roll_number'  => $prefix . '_' . \Str::uuid(),
             'photo'  => $this->photo,
             'password'  => bcrypt($this->password),
-            'role' => 3
+            'role' => 3,
+            'student_profil' => []
+        ]);
+
+        StudentCard::create([
+            'student_id' => $user->id,
+            'front_side' => [],
+            'back_side' => []
         ]);
 
         if (count($this->selected_platforms)) {

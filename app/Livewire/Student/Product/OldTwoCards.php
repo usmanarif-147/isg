@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Cards extends Component
+class OldTwoCards extends Component
 {
     use WithFileUploads;
 
-    public $tab = 1;
+    public $tab = 1, $method = 'saveFrontForm', $data = '', $formSide = '';
 
     public $frontFormFields, $backFormFields;
     public $frontFormData = [], $backFormData = [];
@@ -43,48 +43,28 @@ class Cards extends Component
             return $order[$a['input_type']] <=> $order[$b['input_type']];
         });
 
-        $this->studentCardDetails();
-    }
-
-    public function studentCardDetails()
-    {
-
-        $studentCard = StudentCard::where('student_id', auth()->id())->first();
-
-        $frontSide = $studentCard->front_side;
-        $backSide = $studentCard->back_side;
-
         foreach ($this->frontFormFields as $field) {
             $this->frontFormData[$field['model']] = '';
-        }
-
-        foreach ($this->frontFormData as $key => $value) {
-            if (array_key_exists($key, $frontSide)) {
-                $this->frontFormData[$key] = $frontSide[$key];
-            } else {
-                $this->frontFormData[$key] = '';
-            }
         }
         foreach ($this->backFormFields as $field) {
             $this->backFormData[$field['model']] = '';
         }
-
-        foreach ($this->backFormData as $key => $value) {
-            if (array_key_exists($key, $backSide)) {
-                $this->backFormData[$key] = $backSide[$key];
-            } else {
-                $this->backFormData[$key] = '';
-            }
-        }
+        $this->showFrontForm();
     }
 
     public function showFrontForm()
     {
         $this->tab = 1;
+        $this->method = 'saveFrontForm';
+        $this->data = $this->frontFormFields;
+        $this->formSide = 'frontFormData';
     }
     public function showBackForm()
     {
         $this->tab = 2;
+        $this->method = 'saveBackForm';
+        $this->data = $this->backFormFields;
+        $this->formSide = 'backFormData';
     }
 
     protected function rules()
@@ -115,8 +95,6 @@ class Cards extends Component
 
         if ($data['photo']) {
             $data['photo'] = Storage::disk('public')->put('/cards', $data['photo']);
-        } else {
-            $data['photo'] = null;
         }
 
         StudentCard::where('student_id', auth()->id())->update([
@@ -134,8 +112,6 @@ class Cards extends Component
 
         if ($data['photo']) {
             $data['photo'] = Storage::disk('public')->put('/cards', $data['photo']);
-        } else {
-            $data['photo'] = null;
         }
 
         StudentCard::where('student_id', auth()->id())->update([
