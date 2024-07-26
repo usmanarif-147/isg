@@ -15,6 +15,8 @@ class View extends Component
 
     public $general = 1, $login = 1, $platform = 1;
 
+    public $photoPreviewUrl;
+
     public $platforms;
     public $selected_platforms = [];
 
@@ -44,7 +46,9 @@ class View extends Component
         $this->first_name = $student->first_name;
         $this->last_name = $student->last_name;
         $this->email = $student->email;
+
         $this->oldPhoto = $student->photo;
+        $this->photoPreviewUrl = url('') . '/storage/' . $student->photo;
 
         $this->selected_platforms = $student->platforms->pluck('id')->toArray();
     }
@@ -77,6 +81,12 @@ class View extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields);
+    }
+
+    public function updatedPhoto()
+    {
+        $this->validateOnly('photo');
+        $this->photoPreviewUrl = $this->photo->temporaryUrl();
     }
 
     public function updateGeneral()

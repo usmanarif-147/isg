@@ -113,7 +113,7 @@ class Cards extends Component
 
         $data = $data['frontFormData'];
 
-        if ($data['photo']) {
+        if (isset($data['photo'])) {
             $data['photo'] = Storage::disk('public')->put('/cards', $data['photo']);
         } else {
             $data['photo'] = null;
@@ -123,7 +123,7 @@ class Cards extends Component
             'front_side' => $data
         ]);
 
-        dd("student front side updated");
+        // dd("student front side updated");
     }
 
     public function saveBackForm()
@@ -132,7 +132,7 @@ class Cards extends Component
 
         $data = $data['backFormData'];
 
-        if ($data['photo']) {
+        if (isset($data['photo'])) {
             $data['photo'] = Storage::disk('public')->put('/cards', $data['photo']);
         } else {
             $data['photo'] = null;
@@ -142,7 +142,7 @@ class Cards extends Component
             'back_side' => $data
         ]);
 
-        dd("student back side updated");
+        // dd("student back side updated");
     }
 
     public function render()

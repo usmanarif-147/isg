@@ -1,6 +1,6 @@
 <div class="p-lg-5 p-4">
     <div class="cover-picture position-relative"
-        style="background-image: url('{{ $cover_photo ?? asset('student/images/cover-picture.svg') }}');">
+        style="background-image: url('{{ $cover_photo ? $cover_photo : asset('student/images/cover-picture.svg') }}');">
     </div>
 
     <div class="px-lg-5 px-3">
@@ -9,7 +9,7 @@
                 <div class="d-flex gap-lg-4 gap-3 justify-content-between align-items-center">
                     <div>
                         <div class="profile-pic position-relative">
-                            <img src="{{ $profile_photo ?? 'https://cdn-icons-png.flaticon.com/512/4537/4537019.png' }}"
+                            <img src="{{ $profile_photo ? $profile_photo : 'https://cdn-icons-png.flaticon.com/512/4537/4537019.png' }}"
                                 class="img-fluid rounded-circle" alt="">
                         </div>
                     </div>

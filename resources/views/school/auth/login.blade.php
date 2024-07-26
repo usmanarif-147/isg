@@ -31,7 +31,7 @@
                             <img class="logo-icon me-2" src="{{ asset('admin/images/app-logo.svg') }}" alt="logo">
                         </a>
                     </div>
-                    <h2 class="auth-heading text-center mb-5">Log in to Portal</h2>
+                    <h2 class="auth-heading text-center mb-5">School Portal</h2>
 
                     @if ($errors->has('auth_failed'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -53,7 +53,7 @@
                                 <label class="sr-only" for="signin-password">Password</label>
                                 <input id="signin-password" name="password" type="password"
                                     class="form-control signin-password" placeholder="Password" required="required">
-                                <div class="extra mt-3 row justify-content-between">
+                                {{-- <div class="extra mt-3 row justify-content-between">
                                     <div class="col-6">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value=""
@@ -62,14 +62,14 @@
                                                 Remember me
                                             </label>
                                         </div>
-                                    </div><!--//col-6-->
+                                    </div>
                                     <div class="col-6">
                                         <div class="forgot-password text-end">
                                             <a href="reset-password.html">Forgot password?</a>
                                         </div>
-                                    </div><!--//col-6-->
-                                </div><!--//extra-->
-                            </div><!--//form-group-->
+                                    </div>
+                                </div> --}}
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">
                                     Log In
@@ -77,39 +77,25 @@
                             </div>
                         </form>
 
-                        <div class="auth-option text-center pt-5">
+                        {{-- <div class="auth-option text-center pt-5">
                             No Account? Sign up
                             <a class="text-link" href="signup.html">
                                 here
                             </a>.
-                        </div>
-                    </div><!--//auth-form-container-->
-
-                </div><!--//auth-body-->
-
-                <footer class="app-auth-footer">
-                    <div class="container text-center py-3">
-                        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-                        <small class="copyright">Designed with <span class="sr-only">love</span>
-                            <i class="fas fa-heart" style="color: #fb866a;">
-                            </i> by
-                            <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a>
-                            for developers
-                        </small>
-
+                        </div> --}}
                     </div>
-                </footer><!--//app-auth-footer-->
-            </div><!--//flex-column-->
-        </div><!--//auth-main-col-->
+
+                </div>
+
+            </div>
+        </div>
         <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
             <div class="auth-background-holder">
             </div>
             <div class="auth-background-mask"></div>
-        </div><!--//auth-background-col-->
+        </div>
 
-    </div><!--//row-->
-
-
+    </div>
 </body>
 
 </html>

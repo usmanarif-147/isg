@@ -22,11 +22,16 @@ class Cards extends Component
         $this->frontSide = $studentCart->front_side;
         $this->backSide = $studentCart->back_side;
 
-        if ($this->frontSide['photo']) {
-            $this->frontSidePhoto = url('storage') . '/' . $this->frontSide['photo'];
+        if (!empty($this->frontSide)) {
+            if (isset($this->frontSide['photo'])) {
+                $this->frontSidePhoto = url('storage') . '/' . $this->frontSide['photo'];
+            }
         }
-        if ($this->backSide['photo']) {
-            $this->backSidePhoto = url('storage') . '/' . $this->backSide['photo'];
+
+        if (!empty($this->backSide)) {
+            if (isset($this->backSide['photo'])) {
+                $this->backSidePhoto = url('storage') . '/' . $this->backSide['photo'];
+            }
         }
     }
 

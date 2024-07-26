@@ -8,8 +8,8 @@
                             <div class="bg-charcol d-flex justify-content-center align-items-center">
                                 <div class="d-flex gap-2 align-items-center">
                                     <div>
-                                        <img src="{{ asset(Storage::url($schoolLogo)) }}" class="img-fluid"
-                                            alt="">
+                                        <img src="{{ asset(Storage::url($schoolLogo)) }}" class="img-fluid" alt=""
+                                            height="80" width="80">
                                     </div>
                                     <div>
                                         <p class="m-0">{{ $schoolName }}</p>
@@ -58,7 +58,7 @@
                                 <div class="d-flex gap-2 align-items-center">
                                     <div>
                                         <img src="{{ asset(Storage::url($schoolLogo)) }}" class="img-fluid"
-                                            alt="">
+                                            alt="" height="80" width="80">
                                     </div>
                                     <div>
                                         <p class="m-0">{{ $schoolName }}</p>

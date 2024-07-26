@@ -6,7 +6,6 @@ use App\Models\Platform;
 use App\Models\RollNumberPrefix;
 use App\Models\StudentCard;
 use App\Models\User;
-use App\Models\UserProfile;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -14,6 +13,8 @@ use Livewire\WithFileUploads;
 class Create extends Component
 {
     use WithFileUploads;
+
+    public $photoPreviewUrl = null;
 
     public $platforms;
 
@@ -49,6 +50,13 @@ class Create extends Component
     {
         $this->validateOnly($fields);
     }
+
+    public function updatedPhoto()
+    {
+        $this->validateOnly('photo');
+        $this->photoPreviewUrl = $this->photo->temporaryUrl();
+    }
+
 
     public function storeStudent()
     {

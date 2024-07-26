@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Show extends Component
 {
-    public $tab = 3;
+    public $tab = 1;
 
     public $activePlatforms = [];
 
@@ -31,6 +31,7 @@ class Show extends Component
             $this->about_me = $profile[0]['about_me'];
             $this->full_name = $profile[1]['full_name'];
             $this->bio = $profile[8]['bio'];
+
             $this->profile_photo = url('storage') . '/' . $profile[9]['profile_photo'];
             $this->cover_photo = url('storage') . '/' . $profile[10]['cover_photo'];
         }

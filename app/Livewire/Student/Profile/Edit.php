@@ -89,7 +89,6 @@ class Edit extends Component
 
     public function updated($fields)
     {
-        dd($fields);
         $this->validateOnly($fields);
     }
     public function updatedProfilePhoto()
