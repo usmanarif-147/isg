@@ -15,14 +15,6 @@
                         </form>
                     </div>
                     <div class="col-auto">
-                        <select class="form-select w-auto">
-                            <option selected="" value="option-1">All</option>
-                            <option value="option-2">This week</option>
-                            <option value="option-3">This month</option>
-                            <option value="option-4">Last 3 months</option>
-                        </select>
-                    </div>
-                    <div class="col-auto">
                         <a class="btn app-btn-primary" href="{{ route('admin.school.create') }}">
                             Create
                         </a>
@@ -55,7 +47,8 @@
     </nav> --}}
 
     <div class="tab-content" id="orders-table-tab-content">
-        <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+
+        @if ($schools->count())
             <div class="app-card app-card-orders-table shadow-sm mb-5">
                 <div class="app-card-body">
                     <div class="table-responsive">
@@ -87,7 +80,7 @@
                                             {{ $school->email }}
                                         </td>
                                         <td class="cell">
-                                            {{ $school->created_at }}
+                                            {{ defaultDateFormat($school->created_at) }}
                                         </td>
                                         <td class="cell">
                                             @if ($school->status)
@@ -127,9 +120,16 @@
                     </div>
                 </div>
             </div>
-
             {{ $schools->links() }}
-        </div>
+        @else
+            <div class="app-card app-card-orders-table shadow-sm mb-5">
+                <div class="card text-center">
+                    <div class="card-header">
+                        School Not Found
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 
     <x-custom.confirm-popup :method="$method" :actionBtnText="$btnText" :actionBtnColor="$btnColor" :body="$body" />

@@ -52,7 +52,7 @@
                                 </path>
                             </svg>
                         </span>
-                        <span class="nav-link-text">External</span>
+                        <span class="nav-link-text">Settings</span>
                         <span class="submenu-arrow">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-down"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -64,8 +64,11 @@
                     </a>
                     <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="#">Login</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="#">Signup</a></li>
+                            <li class="submenu-item">
+                                <a class="submenu-link" href="{{ route('admin.change.password') }}">
+                                    Change Password
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

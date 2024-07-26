@@ -13,6 +13,8 @@ class Create extends Component
 {
     use WithFileUploads;
 
+    public $photoPreviewUrl = null;
+
     public
         $name,
         $email,
@@ -35,6 +37,12 @@ class Create extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields);
+    }
+
+    public function updatedPhoto()
+    {
+        $this->validateOnly('photo');
+        $this->photoPreviewUrl = $this->photo->temporaryUrl();
     }
 
     public function storeSchool()

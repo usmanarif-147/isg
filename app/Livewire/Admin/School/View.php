@@ -13,6 +13,8 @@ class View extends Component
 {
     use WithFileUploads;
 
+    public $photoPreviewUrl;
+
     public $general = 1, $login = 1, $platform = 1;
 
     public $platforms;
@@ -41,6 +43,7 @@ class View extends Component
         $this->name = $school->name;
         $this->email = $school->email;
         $this->oldPhoto = $school->photo;
+        $this->photoPreviewUrl = url('') . '/storage/' . $school->photo;
     }
 
     /**
@@ -67,12 +70,18 @@ class View extends Component
         $this->validateOnly($fields);
     }
 
+    public function updatedPhoto()
+    {
+        $this->validateOnly('photo');
+        $this->photoPreviewUrl = $this->photo->temporaryUrl();
+    }
+
     public function updateGeneral()
     {
         $this->general = 1;
         $this->login = 0;
 
-        $this->validate();
+        $data = $this->validate();
 
         if ($this->photo) {
             if ($this->oldPhoto) {

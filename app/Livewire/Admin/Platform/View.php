@@ -11,6 +11,8 @@ class View extends Component
 {
     use WithFileUploads;
 
+    public $photoPreviewUrl;
+
     public
         $platformId,
         $title,
@@ -46,6 +48,12 @@ class View extends Component
     public function updatedPlatform($fields)
     {
         $this->validateOnly($fields);
+    }
+
+    public function updatedIcon()
+    {
+        $this->validateOnly('icon');
+        $this->photoPreviewUrl = $this->icon->temporaryUrl();
     }
 
     public function updatePlatform()

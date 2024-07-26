@@ -16,5 +16,8 @@ Route::middleware(['admin'])->group(function () {
         Route::view('/platforms', 'admin.platform.platforms')->name('platforms');
         Route::view('platform/create', 'admin.platform.create')->name('platform.create');
         Route::view('platform/view/{id}', 'admin.platform.view')->name('platform.view');
+
+        // setting
+        Route::view('/change-password', 'admin.settings.change-password')->name('change.password');
     });
 });

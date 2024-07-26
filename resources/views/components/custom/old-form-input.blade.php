@@ -14,6 +14,36 @@
         <input type="{{ $inputType }}" class="form-control" wire:model.blur="{{ $model }}"
             placeholder="{{ $placeholder }}">
     </div>
+@elseif($formElementType == 'file')
+    <label for="setting-input-2" class="form-label">
+        {{ $labelTitle }}
+        @if ($isRequired)
+            <span class="text-danger">*</span>
+        @endif
+        <span class="text-danger">
+            @error($model)
+                {{ $message }}
+            @enderror
+        </span>
+    </label>
+    <div>
+        <input accept="image/jpeg,image/png,image/jpg" type="file" wire:model.blur="{{ $model }}"
+            class="form-control">
+        {{-- <div class="mt-2">
+            @if ($this->$model && !is_string($this->$model))
+                <img src="{{ $this->$model->temporaryUrl() }}" width="200" height="170"
+                    style="border-radius: 15px">
+            @else
+                @if ($this->$model)
+                    <img src="{{ asset('storage/' . $location . '/images/' . $this->$model) }}" width="200"
+                        height="170" style="border-radius: 15px">
+                @else
+                    <img src="{{ asset($avatar) }}" alt="user-avatar" width="200" height="170"
+                        style="border-radius: 15px">
+                @endif
+            @endif
+        </div> --}}
+    </div>
 @elseif($formElementType == 'select')
     <div class="{{ $width }}">
         <label class="form-label">

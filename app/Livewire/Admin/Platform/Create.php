@@ -11,6 +11,7 @@ class Create extends Component
 {
     use WithFileUploads;
 
+    public $photoPreviewUrl;
     public
         $title,
         $icon;
@@ -29,6 +30,12 @@ class Create extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields);
+    }
+
+    public function updatedIcon()
+    {
+        $this->validateOnly('icon');
+        $this->photoPreviewUrl = $this->icon->temporaryUrl();
     }
 
     public function storePlatform()
