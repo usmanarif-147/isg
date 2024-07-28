@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('student_cards', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('school_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->json('front_side');
             $table->json('back_side');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

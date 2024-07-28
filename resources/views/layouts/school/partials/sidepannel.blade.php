@@ -30,6 +30,18 @@
                         <span class="nav-link-text">Students</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('school.cards') ? 'active' : '' }}"
+                        href="{{ route('school.cards') }}">
+                        <span class="nav-icon">
+                            <i class="fa-solid fa-address-card fs-5"></i>
+                        </span>
+                        <span class="nav-link-text">Cards</span>
+                        <span class="submenu-arrow">
+                            <span class="badge text-bg-warning">5</span>
+                        </span>
+                    </a>
+                </li>
                 <li class="nav-item has-submenu">
                     <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse"
                         data-bs-target="#submenu-2" aria-expanded="false" aria-controls="submenu-2">

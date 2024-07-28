@@ -20,9 +20,7 @@
                         <div class="app-card-body">
                             <x-custom.form-input :formElementType="'input'" :width="''" :margin="'mb-3'" :labelTitle="'Name'"
                                 :model="'name'" :inputType="'text'" :placeholder="'Enter Name'" :isRequired="1" />
-                            <x-custom.form-input :formElementType="'input'" :width="''" :margin="'mb-3'"
-                                :labelTitle="'Upload Logo'" :model="'logo'" :inputType="'file'" :placeholder="''"
-                                :isRequired="1" />
+                            <x-custom.file :photoPreviewUrl="$photoPreviewUrl" :model="'logo'" />
                         </div>
                         <button type="submit" class="btn app-btn-primary">Save Changes</button>
                     </form>

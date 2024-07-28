@@ -1,5 +1,18 @@
 <div>
     <div class="row">
+        <div class="col-4 mt-5">
+            <h5> <strong>Status:</strong> <span class="{{ $status ? 'text-success' : 'text-danger' }}">
+                    {{ $status ? 'Active' : 'Inactive' }}
+                </span>
+            </h5>
+        </div>
+        <div class="col-4 offset-4 mt-5">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Select</option>
+                <option value="1">Stollen Request</option>
+                <option value="2">Update Request</option>
+            </select>
+        </div>
         <div class="col-6">
             <div class="border border-1 shadow position-relative rounded-3 pb-5 student-card mt-5">
                 <div class="container p-0">
@@ -8,8 +21,8 @@
                             <div class="bg-charcol d-flex justify-content-center align-items-center">
                                 <div class="d-flex gap-2 align-items-center">
                                     <div>
-                                        <img src="{{ asset(Storage::url($schoolLogo)) }}" class="img-fluid" alt=""
-                                            height="80" width="80">
+                                        <img src="{{ asset(Storage::url($schoolLogo)) }}" class="img-fluid"
+                                            alt="" height="80" width="80">
                                     </div>
                                     <div>
                                         <p class="m-0">{{ $schoolName }}</p>

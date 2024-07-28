@@ -9,7 +9,7 @@ use Livewire\Component;
 class Cards extends Component
 {
     public $schoolName, $schoolLogo;
-    public $frontSide = [], $backSide = [],
+    public $frontSide = [], $backSide = [], $status,
         $frontSidePhoto = 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?t=st=1716804080~exp=1716807680~hmac=f544d7e2421c72cab962a627fa919c2d9a3849e1ccc759486401d83c64602064&amp;w=740',
         $backSidePhoto = 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?t=st=1716804080~exp=1716807680~hmac=f544d7e2421c72cab962a627fa919c2d9a3849e1ccc759486401d83c64602064&amp;w=740';
     public function mount()
@@ -18,9 +18,10 @@ class Cards extends Component
         $this->schoolName = $template->name;
         $this->schoolLogo = $template->logo;
 
-        $studentCart = StudentCard::where('student_id', auth()->id())->first();
-        $this->frontSide = $studentCart->front_side;
-        $this->backSide = $studentCart->back_side;
+        $studentCard = StudentCard::where('student_id', auth()->id())->first();
+        $this->frontSide = $studentCard->front_side;
+        $this->backSide = $studentCard->back_side;
+        $this->status = $studentCard->status;
 
         if (!empty($this->frontSide)) {
             if (isset($this->frontSide['photo'])) {

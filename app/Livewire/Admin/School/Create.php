@@ -49,8 +49,10 @@ class Create extends Component
     {
 
         $this->validate();
+        $logo = '';
         if ($this->photo) {
             $this->photo = Storage::disk('public')->put('/schools', $this->photo);
+            $logo = Storage::disk('public')->put('/logos', $this->photo);
         }
 
         $school = User::create([
@@ -64,7 +66,7 @@ class Create extends Component
         Template::create([
             'school_id' => $school->id,
             'name' => $school->name,
-            'logo' => $school->photo,
+            'logo' => $logo,
             'front_side' => getTemplateFrontSide(),
             'back_side' => getTemplateBackSide(),
         ]);

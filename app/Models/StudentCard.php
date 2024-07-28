@@ -10,9 +10,11 @@ class StudentCard extends Model
     use HasFactory;
 
     protected $fillable = [
+        'school_id',
         'student_id',
         'front_side',
-        'back_side'
+        'back_side',
+        'status'
     ];
 
     protected $casts = [
@@ -20,6 +22,10 @@ class StudentCard extends Model
         'back_side' => 'array'
     ];
 
+    public function school()
+    {
+        return $this->belongsTo(User::class, 'school_id');
+    }
     public function student()
     {
         return $this->belongsTo(User::class, 'student_id');

@@ -101,6 +101,10 @@
                                                 @endif
                                             </td>
                                             <td class="cell">
+                                                <a class="btn btn-sm btn-success text-white"
+                                                    href="{{ route('admin.platform.view', ['id' => $platform->id]) }}">
+                                                    View
+                                                </a>
                                                 @if ($platform->status)
                                                     <button class="btn btn-sm btn-danger text-white"
                                                         wire:click="confirmDeactivatePlatform({{ $platform->id }})">

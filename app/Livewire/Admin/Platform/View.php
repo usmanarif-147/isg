@@ -32,6 +32,7 @@ class View extends Component
 
         $this->title = $platform->title;
         $this->oldIcon = $platform->icon;
+        $this->photoPreviewUrl = url('') . '/storage/' . $platform->icon;
     }
 
     /**

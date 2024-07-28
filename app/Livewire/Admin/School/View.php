@@ -81,7 +81,7 @@ class View extends Component
         $this->general = 1;
         $this->login = 0;
 
-        $data = $this->validate();
+        $this->validate();
 
         if ($this->photo) {
             if ($this->oldPhoto) {

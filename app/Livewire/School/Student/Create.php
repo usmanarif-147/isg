@@ -81,6 +81,7 @@ class Create extends Component
         ]);
 
         StudentCard::create([
+            'school_id' => $user->school_id,
             'student_id' => $user->id,
             'front_side' => [],
             'back_side' => []

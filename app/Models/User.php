@@ -84,6 +84,11 @@ class User extends Authenticatable
         return $this->hasOne(RollNumberPrefix::class, 'school_id');
     }
 
+    public function cards()
+    {
+        return $this->hasMany(StudentCard::class, 'school_id');
+    }
+
     public function studentCard()
     {
         return $this->hasOne(StudentCard::class, 'student_id');

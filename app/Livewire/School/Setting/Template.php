@@ -3,7 +3,6 @@
 namespace App\Livewire\School\Setting;
 
 use App\Models\Template as ModelsTemplate;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,6 +10,8 @@ use Livewire\WithFileUploads;
 class Template extends Component
 {
     use WithFileUploads;
+
+    public $photoPreviewUrl;
 
     public $general = 1, $front_side = 1, $back_side = 1;
 
@@ -38,6 +39,7 @@ class Template extends Component
 
         $this->name = $template->name;
         $this->oldLogo = $template->logo;
+        $this->photoPreviewUrl = url('') . '/storage/' . $template->logo;
 
         $this->front_side_fields = $template->front_side;
         $this->back_side_fields = $template->back_side;
@@ -74,19 +76,25 @@ class Template extends Component
         $this->validateOnly($fields);
     }
 
+    public function updatedLogo()
+    {
+        $this->validateOnly('logo');
+        $this->photoPreviewUrl = $this->logo->temporaryUrl();
+    }
+
     public function updateGeneral()
     {
         $this->general = 1;
         $this->front_side = 0;
         $this->back_side = 0;
 
-        $data = $this->validate();
+        $this->validate();
 
         if ($this->logo) {
             if ($this->oldLogo) {
                 Storage::disk('public')->delete($this->oldLogo);
             }
-            $this->logo = Storage::disk('public')->put('/schools', $this->logo);
+            $this->logo = Storage::disk('public')->put('/logos', $this->logo);
         } else {
             $this->logo = $this->oldLogo;
         }
