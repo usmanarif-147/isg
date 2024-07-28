@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Show extends Component
 {
-    public $tab = 3;
+    public $tab = 2;
 
     public $activePlatforms = [];
 

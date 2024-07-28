@@ -134,8 +134,8 @@ class Platforms extends Component
             'platform_user.path as platform_user_path',
             'platform_user.status as platform_user_status',
         )
-            ->leftJoin('platform_user', 'users.id', 'platform_user.user_id')
-            ->leftJoin('platforms', 'platform_user.platform_id', 'platforms.id')
+            ->join('platform_user', 'users.id', 'platform_user.user_id')
+            ->join('platforms', 'platform_user.platform_id', 'platforms.id')
             ->where('users.id', auth()->id())
             ->get();
 

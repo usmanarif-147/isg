@@ -94,13 +94,13 @@
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade {{ $tab == 1 ? 'active show' : '' }}">
-                        @include('livewire.student.profile.includes.detail-view')
+                        <livewire:student.profile.tab.details />
                     </div>
                     <div class="tab-pane fade {{ $tab == 2 ? 'active show' : '' }}">
-                        @include('livewire.student.profile.includes.platform-view')
+                        <livewire:student.profile.tab.platforms />
                     </div>
                     <div class="tab-pane fade {{ $tab == 3 ? 'active show' : '' }}">
-                        @include('livewire.student.profile.includes.card-view')
+                        <livewire:student.profile.tab.cards />
                     </div>
                 </div>
             </div>
