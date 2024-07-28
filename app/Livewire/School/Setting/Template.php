@@ -94,7 +94,7 @@ class Template extends Component
             if ($this->oldLogo) {
                 Storage::disk('public')->delete($this->oldLogo);
             }
-            $this->logo = Storage::disk('public')->put('/logos', $this->logo);
+            $this->logo = Storage::disk('public')->put('/schoolLogos', $this->logo);
         } else {
             $this->logo = $this->oldLogo;
         }

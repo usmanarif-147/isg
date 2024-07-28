@@ -52,7 +52,7 @@ class Create extends Component
         $logo = '';
         if ($this->photo) {
             $this->photo = Storage::disk('public')->put('/schools', $this->photo);
-            $logo = Storage::disk('public')->put('/logos', $this->photo);
+            $logo = Storage::disk('public')->put('/schoolLogos', $this->photo);
         }
 
         $school = User::create([
