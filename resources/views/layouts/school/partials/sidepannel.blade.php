@@ -1,3 +1,10 @@
+@php
+    $pending = App\Models\StudentCard::select('id', 'front_side', 'back_side', 'status', 'created_at', 'student_id')
+        ->with('student:id,first_name,last_name,email')
+        ->where('school_id', auth()->id())
+        ->where('status', 1)
+        ->count();
+@endphp
 <div id="app-sidepanel" class="app-sidepanel sidepanel-visible">
     <div id="sidepanel-drop" class="sidepanel-drop"></div>
     <div class="sidepanel-inner d-flex flex-column">
@@ -36,10 +43,16 @@
                         <span class="nav-icon">
                             <i class="fa-solid fa-address-card fs-5"></i>
                         </span>
-                        <span class="nav-link-text">Cards</span>
-                        <span class="submenu-arrow">
-                            <span class="badge text-bg-warning">5</span>
+                        <span class="nav-link-text">
+                            Cards
                         </span>
+                        @if ($pending)
+                            <span class="submenu-arrow">
+                                <span class="badge text-bg-warning">
+                                    {{ $pending }}
+                                </span>
+                            </span>
+                        @endif
                     </a>
                 </li>
                 <li class="nav-item has-submenu">

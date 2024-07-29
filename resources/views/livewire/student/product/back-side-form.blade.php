@@ -65,7 +65,7 @@
             @endif
         @endforeach
     </div>
-    <button type="submit" class="btn btn-custom-bg text-white px-5 my-2">
+    <button type="submit" class="btn btn-custom-bg text-white px-5 my-2" {{ $cardStatus == 2 ? 'disabled' : '' }}>
         Save Back Side
     </button>
 </form>

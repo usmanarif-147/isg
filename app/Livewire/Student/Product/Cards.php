@@ -18,6 +18,8 @@ class Cards extends Component
     public $frontFormFields, $backFormFields;
     public $frontFormData = [], $backFormData = [];
 
+    public $cardStatus;
+
     public function mount()
     {
         $student = User::where('id', auth()->id())->first();
@@ -50,6 +52,7 @@ class Cards extends Component
     {
 
         $studentCard = StudentCard::where('student_id', auth()->id())->first();
+        $this->cardStatus = $studentCard->status;
 
         $frontSide = $studentCard->front_side;
         $backSide = $studentCard->back_side;
@@ -123,8 +126,6 @@ class Cards extends Component
             'front_side' => $data,
             'status' => 1
         ]);
-
-        // dd("student front side updated");
     }
 
     public function saveBackForm()
@@ -143,13 +144,10 @@ class Cards extends Component
             'back_side' => $data,
             'status' => 1
         ]);
-
-        // dd("student back side updated");
     }
 
     public function render()
     {
-
         return view('livewire.student.product.cards');
     }
 }

@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Show extends Component
 {
-    public $tab = 2;
+    public $tab = 1;
 
     public $activePlatforms = [];
 
@@ -22,7 +22,6 @@ class Show extends Component
 
     public function mount()
     {
-
         $student = User::where('id', auth()->id())->first();
         if ($student->student_profile) {
 

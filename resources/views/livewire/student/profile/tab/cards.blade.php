@@ -9,7 +9,7 @@
                 </h5>
             </div>
             <div class="col-4 offset-4">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" style="display: none">
                     <option selected>Select</option>
                     <option value="1">Stollen Request</option>
                     <option value="2">Update Request</option>
