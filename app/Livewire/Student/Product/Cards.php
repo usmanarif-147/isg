@@ -120,7 +120,8 @@ class Cards extends Component
         }
 
         StudentCard::where('student_id', auth()->id())->update([
-            'front_side' => $data
+            'front_side' => $data,
+            'status' => 1
         ]);
 
         // dd("student front side updated");
@@ -139,7 +140,8 @@ class Cards extends Component
         }
 
         StudentCard::where('student_id', auth()->id())->update([
-            'back_side' => $data
+            'back_side' => $data,
+            'status' => 1
         ]);
 
         // dd("student back side updated");

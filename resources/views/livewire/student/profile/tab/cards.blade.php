@@ -3,8 +3,8 @@
     @if (count($frontSide) || count($backSide))
         <div class="row mt-5">
             <div class="col-4">
-                <h5> <strong>Status:</strong> <span class="{{ $status ? 'text-success' : 'text-danger' }}">
-                        {{ $status ? 'Active' : 'Inactive' }}
+                <h5> <strong>Status:</strong> <span class="{{ $status == 3 ? 'text-danger' : 'text-success' }}">
+                        {{ $status == 1 ? 'Pending' : ($status == 2 ? 'Active' : 'Inactive') }}
                     </span>
                 </h5>
             </div>
