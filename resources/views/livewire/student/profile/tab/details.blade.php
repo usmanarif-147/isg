@@ -86,7 +86,7 @@
                         <div class="d-flex justify-content-between align-items-center mt-3 mb-0 gap-2">
                             <div>
                                 <h6 class="navy-blue fw-600 m-0">
-                                    Gander:
+                                    Gender:
                                 </h6>
                             </div>
                             <div>
@@ -101,7 +101,7 @@
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">
-                                    haseeb7063952@gmail.com
+                                    {{ auth()->user()->email }}
                                 </p>
                             </div>
                         </div>

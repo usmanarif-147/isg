@@ -228,10 +228,6 @@ if (!function_exists('generate_string')) {
     }
 }
 
-
-/**
- * Check user Time On App
- */
 if (!function_exists('userTimeOnApp')) {
     function userTimeOnApp($createdAt)
     {
@@ -290,5 +286,47 @@ if (!function_exists('userTimeOnApp')) {
             $discount_amount = ($price * $discount) / 100;
             return floor($price - $discount_amount);
         }
+    }
+}
+
+if (!function_exists('generate_string')) {
+    function generate_string($input, $strength = 16)
+    {
+        $input_length = strlen($input);
+        $random_string = '';
+        for ($i = 0; $i < $strength; $i++) {
+            $random_character = $input[mt_rand(0, $input_length - 1)];
+            $random_string .= $random_character;
+        }
+        return $random_string;
+    }
+}
+
+if (!function_exists('get_nationalities')) {
+    function get_nationalities()
+    {
+        return [
+            'German' => 'German',
+            'French' => 'French',
+            'British' => 'British',
+            'Spanish' => 'Spanish'
+        ];
+    }
+}
+
+if (!function_exists('get_blood_groups')) {
+    function get_blood_groups()
+    {
+        return [
+
+            "A-" => "A-",
+            "A+" => "A+",
+            "B-"  => "B-",
+            "B+" => "B+",
+            "O-" => "O-",
+            "O+" => "O+",
+            "AB-" => "AB-",
+            "AB+" => "AB+",
+        ];
     }
 }

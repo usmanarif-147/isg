@@ -31,8 +31,12 @@ class Show extends Component
             $this->full_name = $profile[1]['full_name'];
             $this->bio = $profile[8]['bio'];
 
-            $this->profile_photo = url('storage') . '/' . $profile[9]['profile_photo'];
-            $this->cover_photo = url('storage') . '/' . $profile[10]['cover_photo'];
+            if ($profile[9]['profile_photo']) {
+                $this->profile_photo = url('storage') . '/' . $profile[9]['profile_photo'];
+            }
+            if ($profile[10]['cover_photo']) {
+                $this->cover_photo = url('storage') . '/' . $profile[10]['cover_photo'];
+            }
         }
 
         $this->getActivePlatforms();

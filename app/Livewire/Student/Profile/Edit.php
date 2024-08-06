@@ -48,8 +48,13 @@ class Edit extends Component
 
             $this->old_profile_photo = $profile[9]['profile_photo'];
             $this->old_cover_photo  = $profile[10]['cover_photo'];
-            $this->profile_photo_preview = url('storage') . '/' . $profile[9]['profile_photo'];
-            $this->cover_photo_preview = url('storage') . '/' . $profile[10]['cover_photo'];
+
+            if ($profile[9]['profile_photo']) {
+                $this->profile_photo_preview = url('storage') . '/' . $profile[9]['profile_photo'];
+            }
+            if ($profile[10]['cover_photo']) {
+                $this->cover_photo_preview = url('storage') . '/' . $profile[10]['cover_photo'];
+            }
         }
     }
 
@@ -58,32 +63,18 @@ class Edit extends Component
      */
     protected function rules()
     {
-        // $rules = [
-        //     'about_me'          =>      ['sometimes', 'string', 'max:255'],
-        //     'full_name'         =>      ['sometimes', 'string', 'max:255'],
-        //     'cnic'              =>      ['sometimes', 'string', 'max:20'],
-        //     'blood_group'       =>      ['sometimes', 'string', 'max:10'],
-        //     'phone'             =>      ['sometimes', 'string', 'max:20'],
-        //     'dob'               =>      ['sometimes', 'date'],
-        //     'nationality'       =>      ['sometimes', 'string', 'max:255'],
-        //     'gender'            =>      ['sometimes', 'string', 'max:10'],
-        //     'bio'               =>      ['sometimes', 'string'],
-        //     'profile_photo'     =>      ['sometimes', 'nullable', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
-        //     'cover_photo'       =>      ['sometimes', 'nullable', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
-        // ];
-
         return [
-            'about_me'          =>      'sometimes|string|max:255',
+            'about_me'          =>      'nullable|string|max:255',
             'full_name'         =>      'sometimes|string|max:255',
-            'cnic'              =>      'sometimes|string|max:20',
-            'blood_group'       =>      'sometimes|string|max:10',
-            'phone'             =>      'sometimes|string|max:20',
+            'cnic'              =>      'nullable|string|max:20',
+            'blood_group'       =>      'nullable',
+            'phone'             =>      'required|string|max:20',
             'dob'               =>      'sometimes|date',
-            'nationality'       =>      'sometimes|string|max:255',
-            'gender'            =>      'sometimes|string|max:10',
-            'bio'               =>      'sometimes|string',
-            'profile_photo'     =>      'sometimes|nullable|mimes:jpg,jpeg,png,webp|max:4096',
-            'cover_photo'       =>      'sometimes|nullable|mimes:jpg,jpeg,png,webp|max:4096',
+            'nationality'       =>      'required|not_in:0',
+            'gender'            =>      'required|not_in:0',
+            'bio'               =>      'nullable',
+            'profile_photo'     =>      'nullable|mimes:jpg,jpeg,png,webp|max:4096',
+            'cover_photo'       =>      'nullable|mimes:jpg,jpeg,png,webp|max:4096',
         ];
     }
 

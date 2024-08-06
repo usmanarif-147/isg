@@ -89,8 +89,14 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <div class="form-floating">
-                                <input wire:model.live="blood_group" type="text" class="form-control input-radius"
-                                    id="blood_group">
+                                <select class="form-select" id="floatingSelect" wire:model.live="blood_group">
+                                    <option selected>Select Blood Group</option>
+                                    @foreach (get_blood_groups() as $group)
+                                        <option value="{{ $group }}"
+                                            {{ $group == $blood_group ? 'selected' : '' }}>{{ $group }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                 <label for="blood_group">Blood Group</label>
                                 @error('blood_group')
                                     <span class="text-danger">{{ $message }}</span>
@@ -118,9 +124,16 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
+
                             <div class="form-floating">
-                                <input wire:model.live="nationality" type="text" class="form-control input-radius"
-                                    id="nationality">
+                                <select class="form-select" id="floatingSelect" wire:model.live="nationality">
+                                    <option selected>Select Nationaltiy</option>
+                                    @foreach (get_nationalities() as $n)
+                                        <option value="{{ $n }}"
+                                            {{ $n == $nationality ? 'selected' : '' }}>{{ $n }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                 <label for="nationality">Nationality</label>
                                 @error('nationality')
                                     <span class="text-danger">{{ $message }}</span>
@@ -128,10 +141,14 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6">
+
                             <div class="form-floating">
-                                <input wire:model.live="gender" type="text" class="form-control input-radius"
-                                    id="gender">
-                                <label for="gender">Gender</label>
+                                <select class="form-select" id="floatingSelect" wire:model.live="gender">
+                                    <option value="0" selected>Select Gender</option>
+                                    <option value="Male" {{ $gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ $gender == 'Female' ? 'selected' : '' }}>Female</option>
+                                </select>
+                                <label for="nationality">Gender</label>
                                 @error('gender')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -166,92 +183,6 @@
                 </div>
             </form>
         </div>
-
-        {{-- <div class="row">
-            <form wire:submit.prevent="updateProfile">
-                <h5 class="fw-700 pt-3 pb-2">About Me</h5>
-                <div class="mb-3">
-                    <textarea class="form-control bg-transparent" id="exampleFormControlTextarea1" rows="5"></textarea>
-                </div>
-                <h5 class="fw-700 py-3 m-0">Personal Information</h5>
-                <div class="container">
-                    <div class="row gy-3 mb-3">
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">Full Name</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">CNIC</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">Blood Group</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="date" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">DOB</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="number" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">Phone</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">Nationality</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">Gender</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control input-radius" id="floatingInputGrid"
-                                    placeholder="name@example.com">
-                                <label for="floatingInputGrid">Bio</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-end mb-4">
-                    <div class="col-12 col-lg-5">
-                        <div class="row">
-                            <div class="col-6">
-                                <button class="btn btn-outline-dark w-100 px-5">
-                                    Cancel
-                                </button>
-                            </div>
-                            <div class="col-6">
-                                <button type="submit" class="btn btn-custom-bg text-white w-100 px-5">
-                                    Save
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div> --}}
     </div>
 
 </div>
