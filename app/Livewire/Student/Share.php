@@ -13,7 +13,7 @@ class Share extends Component
 
         $rollNumber = auth()->user()->roll_number;
         $school = User::where('id', auth()->user()->school_id)->first();
-        $url = url('') . '/' . $school->name . '/' . $rollNumber;
+        $url = url('') . '/' . $school->name . '/' . $rollNumber .'/profile';
         $qrCode = FacadesQrCode::size(150)->generate($url);
 
         return view('livewire.student.share', [

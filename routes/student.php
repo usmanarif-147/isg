@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/{school}/{roll_number}', function () {
+Route::get('/{school}/{roll_number}/profile', function () {
     return view('student.view-profile');
 });
 
