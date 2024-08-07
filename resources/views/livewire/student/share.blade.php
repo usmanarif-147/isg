@@ -23,7 +23,7 @@
             class="d-flex justify-content-between copy-profile-url-bg rounded-3 align-items-center gap-5 bg-light-secondary px-3 py-2 my-3">
             <div>
                 <p class="m-0">
-                    {{ url('') . '/' . $rollNumber }}
+                    {{ $url }}
                 </p>
             </div>
             <div>
