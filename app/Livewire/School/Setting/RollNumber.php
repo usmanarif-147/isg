@@ -48,7 +48,11 @@ class RollNumber extends Component
             'prefix' => $this->prefix,
         ]);
 
-        session()->flash('generalMessage', 'Roll Number Prefix Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Roll Number Prefix Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function render()

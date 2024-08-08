@@ -44,6 +44,12 @@ class ChangePassword extends Component
             $this->background = 'alert-success';
         }
         $this->reset(['old_password', 'password', 'password_confirmation']);
+
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Password Changed Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function resetFields()

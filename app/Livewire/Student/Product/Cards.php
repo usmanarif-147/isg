@@ -126,6 +126,12 @@ class Cards extends Component
             'front_side' => $data,
             'status' => 1
         ]);
+
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Front Card Details Filled Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function saveBackForm()
@@ -143,6 +149,12 @@ class Cards extends Component
         StudentCard::where('student_id', auth()->id())->update([
             'back_side' => $data,
             'status' => 1
+        ]);
+
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Back Card Details Filled Successfully.',
+            'icon' => 'success'
         ]);
     }
 

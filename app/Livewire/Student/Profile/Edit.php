@@ -121,7 +121,11 @@ class Edit extends Component
 
         User::where('id', auth()->id())->update(['student_profile' => $studentData]);
 
-        session()->flash('message', 'Profile Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Profile Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function render()

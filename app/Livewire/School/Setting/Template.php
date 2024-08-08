@@ -104,7 +104,11 @@ class Template extends Component
             'logo' => $this->logo
         ]);
 
-        session()->flash('generalMessage', 'Student Details Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'School Details Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function updateFrontSideFields()
@@ -121,7 +125,11 @@ class Template extends Component
         ModelsTemplate::where('id', $this->templateId)
             ->update(['front_side' => $this->front_side_fields]);
 
-        session()->flash('frontSideMessage', 'Front Fields Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Card Front Fields Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function updateBackSideFields()
@@ -139,7 +147,11 @@ class Template extends Component
         ModelsTemplate::where('id', $this->templateId)
             ->update(['back_side' => $this->back_side_fields]);
 
-        session()->flash('backSideMessage', 'Back Side Fields Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Card Back Side Fields Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function render()

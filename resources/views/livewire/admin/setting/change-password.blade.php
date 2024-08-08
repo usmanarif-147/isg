@@ -7,11 +7,6 @@
             <h3 class="section-title">
                 Password
             </h3>
-            @if ($message)
-                <div class="alert {{ $background }}" role="alert">
-                    {{ $message }}
-                </div>
-            @endif
         </div>
         <div class="col-12 col-md-8">
             <div class="app-card app-card-settings shadow-sm p-4">
@@ -64,4 +59,23 @@
             </div>
         </div>
     </div>
+
+    <script>
+        window.addEventListener('swal:modal', event => {
+            Swal.fire({
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                icon: event.detail[0].icon,
+                confirmButtonText: 'OK',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                }
+            });
+        });
+    </script>
+
 </div>

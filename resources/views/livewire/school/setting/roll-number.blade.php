@@ -8,11 +8,6 @@
                 <h3 class="section-title">
                     General
                 </h3>
-                @if (session()->has('generalMessage'))
-                    <div class="alert alert-primary" role="alert">
-                        {{ session('generalMessage') }}
-                    </div>
-                @endif
             </div>
             <div class="col-12 col-md-8">
                 <div class="app-card app-card-settings shadow-sm p-4">
@@ -27,4 +22,23 @@
             </div>
         </div>
     </div>
+
+    <script>
+        window.addEventListener('swal:modal', event => {
+            Swal.fire({
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                icon: event.detail[0].icon,
+                confirmButtonText: 'OK',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                }
+            });
+        });
+    </script>
+
 </div>

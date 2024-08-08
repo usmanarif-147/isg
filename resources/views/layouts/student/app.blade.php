@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @include('layouts.student.partials.css')
-    @include('layouts.student.partials.js')
     <title>Dashboard</title>
 
 </head>
@@ -29,7 +28,7 @@
         </div>
     </section>
 
-
+    @include('layouts.student.partials.js')
 
 
 </body>

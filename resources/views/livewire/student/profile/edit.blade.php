@@ -1,10 +1,4 @@
 <div>
-
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
     <div class="cover-picture position-relative"
         style="background-image: url('{{ $cover_photo_preview ?? asset('student/images/cover-picture.svg') }}');">
         <div
@@ -184,5 +178,23 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('swal:modal', event => {
+            Swal.fire({
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                icon: event.detail[0].icon,
+                confirmButtonText: 'OK',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                }
+            });
+        });
+    </script>
 
 </div>
