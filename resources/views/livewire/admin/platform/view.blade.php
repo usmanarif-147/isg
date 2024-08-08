@@ -1,12 +1,6 @@
 <div>
     <h1 class="app-page-title">Platform Details</h1>
 
-    @if (session()->has('message'))
-        <div class="alert alert-primary" role="alert">
-            {{ session('message') }}
-        </div>
-    @endif
-
     <hr class="mb-4">
     <form wire:submit.prevent="updatePlatform">
         <div class="row g-4 settings-section">
@@ -26,4 +20,22 @@
         <hr class="my-4">
         <button type="submit" class="btn app-btn-primary">Save Changes</button>
     </form>
+
+    <script>
+        window.addEventListener('swal:modal', event => {
+            Swal.fire({
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                icon: event.detail[0].icon,
+                confirmButtonText: 'OK',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.dispatch('ok-button-clicked');
+                }
+            });
+        });
+    </script>
 </div>

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin\School;
 
-use App\Models\Platform;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -99,7 +98,11 @@ class View extends Component
 
         $this->reset('photo');
 
-        session()->flash('generalMessage', 'School Details Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'School Details Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function updateLogin()
@@ -113,7 +116,11 @@ class View extends Component
             'password' => bcrypt($this->password),
         ]);
 
-        session()->flash('loginMessage', 'School Details Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'School Details Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function render()

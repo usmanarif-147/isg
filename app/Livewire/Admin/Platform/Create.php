@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Platform;
 
 use App\Models\Platform;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -52,7 +53,17 @@ class Create extends Component
 
         $this->reset();
 
-        session()->flash('message', 'Platform Create Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Platform Added Succesfully',
+            'icon' => 'success'
+        ]);
+    }
+
+    #[On('ok-button-clicked')]
+    public function okButtonClicked()
+    {
+        $this->redirectRoute('admin.platforms');
     }
 
     public function render()

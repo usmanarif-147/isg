@@ -11,6 +11,9 @@
 <script src="{{ asset('admin/js/index-charts.js') }}"></script>
 <script src="{{ asset('admin/js/charts-demo.js') }}"></script>
 
+{{-- Sweet Alert --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!-- Page Specific JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('admin/js/app.js') }}"></script>

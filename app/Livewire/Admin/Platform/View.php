@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Platform;
 
 use App\Models\Platform;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -78,7 +79,17 @@ class View extends Component
 
         $this->reset('icon');
 
-        session()->flash('message', 'Platform Details Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Platform Details Updated Successfully.',
+            'icon' => 'success'
+        ]);
+    }
+
+    #[On('ok-button-clicked')]
+    public function okButtonClicked()
+    {
+        $this->redirectRoute('admin.platforms');
     }
 
     public function render()

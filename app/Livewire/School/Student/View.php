@@ -114,7 +114,11 @@ class View extends Component
 
         $this->reset('photo');
 
-        session()->flash('generalMessage', 'Student Details Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Student Details Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function updateLogin()
@@ -129,7 +133,11 @@ class View extends Component
             'password' => bcrypt($this->password),
         ]);
 
-        session()->flash('loginMessage', 'Student Details Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Student Details Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function updatePlatform()
@@ -144,7 +152,11 @@ class View extends Component
 
         $user->platforms()->sync($this->selected_platforms);
 
-        session()->flash('platformMessage', 'Student Platforms Updated Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Student Platforms Updated Successfully.',
+            'icon' => 'success'
+        ]);
     }
 
     public function render()

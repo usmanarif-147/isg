@@ -7,6 +7,7 @@ use App\Models\RollNumberPrefix;
 use App\Models\StudentCard;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -93,7 +94,17 @@ class Create extends Component
 
         $this->reset(['first_name', 'last_name', 'email', 'photo', 'password', 'selected_platforms']);
 
-        session()->flash('message', 'Student Create Successfully.');
+        $this->dispatch('swal:modal', [
+            'title' =>  'Success',
+            'text' => 'Student Create Successfully.',
+            'icon' => 'success'
+        ]);
+    }
+
+    #[On('ok-button-clicked')]
+    public function okButtonClicked()
+    {
+        $this->redirectRoute('school.students');
     }
 
     public function render()
