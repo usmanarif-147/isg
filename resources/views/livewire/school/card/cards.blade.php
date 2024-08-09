@@ -83,20 +83,6 @@
                 </div>
 
                 {{ $studentCards->links() }}
-
-                {{-- <nav class="app-pagination">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav> --}}
             </div>
         </div>
     @else
@@ -111,13 +97,51 @@
 
     <x-custom.confirm-popup :method="$method" :actionBtnText="$btnText" :actionBtnColor="$btnColor" :body="$body" />
 
+    <div wire:ignore.self class="modal fade" id="reasonPopup" tabindex="-1" aria-labelledby="reasonPopupLabel"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <form wire:submit.prevent="deactivate">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="reasonPopupLabel">Reason For Deactivation Card</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="setting-input-2" class="form-label">
+                                Enter Reason
+                                <span class="text-danger">*</span>
+                                <span class="text-danger">
+                                    @error('reason')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </label>
+                            <textarea class="form-control" wire:model.live="reason" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('confirm-popup', event => {
+        window.addEventListener('confirm-popup', event => {
             $('#confirmPopup').modal('show')
         });
 
-        document.addEventListener('swal:modal', event => {
+        window.addEventListener('reason-popup', event => {
+            $('#confirmPopup').modal('hide')
+            $('#reasonPopup').modal('show')
+        });
+
+        window.addEventListener('swal:modal', event => {
             $('#confirmPopup').modal('hide');
+            $('#reasonPopup').modal('hide')
             Swal.fire({
                 title: event.detail[0].title,
                 text: event.detail[0].text,

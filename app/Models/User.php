@@ -93,9 +93,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(StudentCard::class, 'student_id');
     }
-
-    public function studentNotifications()
-    {
-        return $this->hasMany(Notification::class, 'student_id');
-    }
 }
