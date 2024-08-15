@@ -16,11 +16,11 @@
             </div>
         </div>
     </div>
-    <div class="text-end">
+    {{-- <div class="text-end">
         <button class="btn marks-as-read-text fw-500">
             Mark all as read
         </button>
-    </div>
+    </div> --}}
     <div class="row">
         <div class="col-12">
             <ul class="nav nav-pills mb-3 custom-nav" id="pills-tab" role="tablist">
@@ -30,7 +30,7 @@
                         New
                         @if ($totalNewAnnouncements)
                             <span class="text-danger fw-bold">
-                                {{ $totalNewAnnouncements }}
+                                ({{ $totalNewAnnouncements }})
                             </span>
                         @endif
                     </button>
@@ -41,7 +41,7 @@
                         Old
                         @if ($totalOldAnnouncements)
                             <span class="text-danger fw-bold">
-                                {{ $totalOldAnnouncements }}
+                                ({{ $totalOldAnnouncements }})
                             </span>
                         @endif
                     </button>
@@ -59,8 +59,10 @@
                                             {{ $announcement->title }}
                                         </h6>
                                         <p class="m-0">
-                                            {{ $announcement->message }}...
-                                            <a href="javascript:void(0)"
+                                            <span>
+                                                {{ substr($announcement->message, 0, 10) }}...
+                                            </span>
+                                            <a href="javascript:void(0)" class="m-3"
                                                 wire:click="markAsRead('{{ $announcement->id }}')">
                                                 Read
                                             </a>
@@ -90,7 +92,6 @@
                                             <div class="d-flex justify-content-between">
                                                 <div>
                                                     {{ $announcement->title }}
-
                                                 </div>
                                                 <div>
                                                     <button class="btn btn-sm btn-danger"
@@ -101,8 +102,11 @@
                                             </div>
                                         </h6>
                                         <p class="m-0">
-                                            {{ $announcement->message }}...
-                                            <a href="javascript:void(0)" wire:click="read('{{ $announcement->id }}')">
+                                            <span>
+                                                {{ substr($announcement->message, 0, 10) }}...
+                                            </span>
+                                            <a href="javascript:void(0)" class="m-3"
+                                                wire:click="read('{{ $announcement->id }}')">
                                                 Read
                                             </a>
                                         </p>
