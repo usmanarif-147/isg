@@ -1,9 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Admin;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder

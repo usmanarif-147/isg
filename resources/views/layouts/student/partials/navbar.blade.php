@@ -144,19 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <a href="{{ route('student.notification') }}">
-                        <div class="position-relative">
-                            <img src="{{ asset('student/images/bell-icon.svg') }}" class="img-fluid" alt="">
-                            @if (auth()->user()->unreadNotifications->count())
-                                <div class="position-absolute bottom-0">
-                                    <img src="{{ asset('student/images/red-circle.svg') }}" class="img-fluid"
-                                        alt="">
-                                </div>
-                            @endif
-                        </div>
-                    </a>
-                </div>
+                <livewire:student.navbar />
             </div>
         </div>
     </div>

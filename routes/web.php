@@ -2,12 +2,25 @@
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\File;
-
 
 Route::get('/', function () {
     return redirect()->route('student.login');
 });
+
+// Route::get('read-csv', function () {
+//     $path = public_path('robobandz-urls.csv');
+
+//     $data = [];
+
+//     if (($handle = fopen($path, 'r')) !== false) {
+//         while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+//             $data[] = $row;
+//         }
+//         fclose($handle);
+//     }
+
+//     dd($data);
+// });
 
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');

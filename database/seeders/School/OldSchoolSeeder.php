@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\School;
 
 use App\Models\RollNumberPrefix;
 use App\Models\Template;
@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
-class SchoolSeeder extends Seeder
+class OldSchoolSeeder extends Seeder
 {
     /**
      * Run the database seeds.

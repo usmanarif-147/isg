@@ -93,4 +93,19 @@ class User extends Authenticatable
     {
         return $this->hasOne(StudentCard::class, 'student_id');
     }
+
+    public function announcements()
+    {
+        return $this->hasMany(Announcement::class, 'school_id');
+    }
+
+    public function studentAnnouncements()
+    {
+        return $this->belongsToMany(User::class, 'announcement_student', 'announcement_id', 'student_id')
+            ->withPivot(
+                'is_read',
+                'read_at'
+            )
+            ->withTimestamps();
+    }
 }

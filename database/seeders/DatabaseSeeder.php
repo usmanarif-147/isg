@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Seeders\Admin\AdminSeeder;
+use Database\Seeders\Admin\PlatformSeeder;
+use Database\Seeders\School\AnnouncementSeeder;
+use Database\Seeders\School\SchoolSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,9 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            AdminSeeder::class,
+            // AdminSeeder::class,
             // PlatformSeeder::class,
             // SchoolSeeder::class,
+            AnnouncementSeeder::class
             // StudentSeeder::class,
 
         ]);

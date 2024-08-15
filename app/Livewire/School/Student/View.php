@@ -29,7 +29,6 @@ class View extends Component
         $photo,
         $oldPhoto;
 
-
     /**
      * Mount
      */

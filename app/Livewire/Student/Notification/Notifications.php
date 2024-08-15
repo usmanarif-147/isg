@@ -8,6 +8,11 @@ use Livewire\Component;
 class Notifications extends Component
 {
 
+    public function mount()
+    {
+        $this->dispatch('read-notifications');
+    }
+
     public function deleteNotification($id)
     {
         DB::table('notifications')->where('id', $id)->delete();
@@ -15,14 +20,10 @@ class Notifications extends Component
 
     public function render()
     {
-        auth()->user()->unreadNotifications->markAsRead();
-
         $notifications = auth()->user()->notifications;
-        return view(
-            'livewire.student.notification.notifications',
-            [
-                'notifications' => $notifications
-            ]
-        );
+
+        return view('livewire.student.notification.notifications', [
+            'notifications' => $notifications
+        ]);
     }
 }

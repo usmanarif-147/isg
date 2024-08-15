@@ -1,10 +1,9 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Admin;
 
 use App\Models\Platform;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class PlatformSeeder extends Seeder
