@@ -1,6 +1,6 @@
 <div>
     <div class="p-4 card-shadow my-4">
-        <h5 class="navy-blue fw-bold">About Me</h5>
+        <h5 class="navy-blue fw-bold">{{trans('student.profile_tab_details.about_me')}}</h5>
         <p class="fs-13 m-0">
             {{ $about_me }}
         </p>
@@ -9,13 +9,13 @@
         <div class="col-12 col-lg-8">
             <div class="card-shadow p-4">
                 <h5 class="navy-blue fw-bold">
-                    Personal information
+                    {{trans('student.profile_tab_details.personal_information')}}
                 </h5>
                 <div class="row">
                     <div class="col-12 col-lg-4">
                         <div class="d-flex justify-content-between align-items-center my-4 gap-2">
                             <div>
-                                <h6 class="navy-blue fw-600 m-0">Name:</h6>
+                                <h6 class="navy-blue fw-600 m-0">{{trans('student.profile_tab_details.name')}}:</h6>
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">
@@ -27,7 +27,7 @@
                     <div class="col-12 col-lg-4">
                         <div class="d-flex justify-content-between align-items-center my-4 gap-2">
                             <div>
-                                <h6 class="navy-blue fw-600 m-0">CNIC:</h6>
+                                <h6 class="navy-blue fw-600 m-0">{{trans('student.profile_tab_details.cnic')}}:</h6>
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">
@@ -40,7 +40,7 @@
                         <div class="d-flex justify-content-between align-items-center my-4 gap-2">
                             <div>
                                 <h6 class="navy-blue fw-600 m-0">
-                                    Blood Gr:
+                                    {{trans('student.profile_tab_details.blood_gr')}}:
                                 </h6>
                             </div>
                             <div>
@@ -51,7 +51,7 @@
                     <div class="col-12 col-lg-4">
                         <div class="d-flex justify-content-between align-items-center my-4 gap-2">
                             <div>
-                                <h6 class="navy-blue fw-600 m-0">DOB:</h6>
+                                <h6 class="navy-blue fw-600 m-0">{{trans('student.profile_tab_details.dob')}}:</h6>
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">{{ $dob }}</p>
@@ -61,7 +61,7 @@
                     <div class="col-12 col-lg-4">
                         <div class="d-flex justify-content-between align-items-center my-4 gap-2">
                             <div>
-                                <h6 class="navy-blue fw-600 m-0">Phone:</h6>
+                                <h6 class="navy-blue fw-600 m-0">{{trans('student.profile_tab_details.phone')}}:</h6>
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">
@@ -74,7 +74,7 @@
                         <div class="d-flex justify-content-between align-items-center my-4 gap-2">
                             <div>
                                 <h6 class="navy-blue fw-600 m-0">
-                                    Nationality:
+                                    {{trans('student.profile_tab_details.nationality')}}:
                                 </h6>
                             </div>
                             <div>
@@ -86,7 +86,7 @@
                         <div class="d-flex justify-content-between align-items-center mt-3 mb-0 gap-2">
                             <div>
                                 <h6 class="navy-blue fw-600 m-0">
-                                    Gender:
+                                    {{trans('student.profile_tab_details.gender')}}:
                                 </h6>
                             </div>
                             <div>
@@ -97,7 +97,7 @@
                     <div class="col-12 col-lg-4">
                         <div class="d-flex justify-content-between align-items-center mt-3 mb-0 gap-2">
                             <div>
-                                <h6 class="navy-blue fw-600 m-0">Email:</h6>
+                                <h6 class="navy-blue fw-600 m-0">{{trans('student.profile_tab_details.email')}}:</h6>
                             </div>
                             <div>
                                 <p class="info-text fs-15 m-0">

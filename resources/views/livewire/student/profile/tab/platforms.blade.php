@@ -15,7 +15,7 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label">
-                                            Enter Path
+                                            {{trans('student.profile_tab_platform.enter_path')}}
                                             <span class="text-danger">
                                                 *
                                                 @error('path')
@@ -74,14 +74,14 @@
                                             <div>
                                                 <button class="btn btn-sm btn-warning"
                                                     wire:click="editPlatform('{{ $platform->platform_id }}', '{{ $platform->platform_title }}')">
-                                                    Update
+                                                    {{trans('student.profile_tab_platform.update')}}
                                                 </button>
                                             </div>
                                         @else
                                             <div>
                                                 <button class="btn btn-sm btn-primary"
                                                     wire:click="addPlatform('{{ $platform->platform_id }}', '{{ $platform->platform_title }}')">
-                                                    Add
+                                                    {{trans('student.profile_tab_platform.add')}}
                                                 </button>
                                             </div>
                                         @endif
@@ -94,7 +94,7 @@
             @else
                 <div class="card text-center">
                     <div class="card-header">
-                        <h2> No Platforms Found </h2>
+                        <h2> {{trans('student.profile_tab_platform.not_found')}} </h2>
                     </div>
                 </div>
             @endif

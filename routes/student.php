@@ -6,7 +6,7 @@ Route::get('/{school}/{roll_number}/profile', function () {
     return view('student.view-profile');
 });
 
-Route::middleware(['student'])->group(function () {
+Route::middleware(['student', 'language'])->group(function () {
     Route::view('/dashboard', 'student.dashboard')
         ->name('student.dashboard');
 

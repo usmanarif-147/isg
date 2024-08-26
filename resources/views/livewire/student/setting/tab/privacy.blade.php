@@ -1,10 +1,10 @@
 <div>
-    <h5 class="fw-500">Privacy</h5>
+    <h5 class="fw-500">{{trans('student.tab_privacy.privacy')}}</h5>
     <hr class="mb-0">
-    <p class="pt-2">what you want to show at your profile</p>
+    <p class="pt-2">{{trans('student.tab_privacy.what_you_want_to_show')}}</p>
     <div class="row">
         <div class="col-lg-5 col-12">
-            <h5 class="pb-2">Personal information</h5>
+            <h5 class="pb-2">{{trans('student.tab_privacy.personal_information')}}</h5>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
                     <h6 class="fw-600 personal-info-text">CNIC</h6>
@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
                     <h6 class="fw-600 personal-info-text">
-                        Blood Group
+                        {{trans('student.tab_privacy.blood_group')}}
                     </h6>
                 </div>
                 <div>
@@ -30,7 +30,7 @@
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
                     <h6 class="fw-600 personal-info-text">
-                        Date of Birth
+                        {{trans('student.tab_privacy.date_of_birth')}}
                     </h6>
                 </div>
                 <div>
@@ -41,7 +41,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Phone</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.phone')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">
@@ -51,7 +51,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Gender</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.gender')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">
@@ -62,7 +62,7 @@
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
                     <h6 class="fw-600 personal-info-text">
-                        Nationality
+                        {{trans('student.tab_privacy.nationality')}}
                     </h6>
                 </div>
                 <div>
@@ -73,7 +73,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Email</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.email')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">
@@ -81,11 +81,11 @@
                     </div>
                 </div>
             </div>
-            <h5 class="pb-2">Student information</h5>
+            <h5 class="pb-2">{{trans('student.tab_privacy.student_information')}}</h5>
 
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Roll No</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.roll_no')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">
@@ -95,7 +95,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Degree</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.degree')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">
@@ -105,7 +105,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Batch</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.batch')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">
@@ -115,7 +115,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Section</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.section')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">
@@ -125,7 +125,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-center my-3">
                 <div>
-                    <h6 class="fw-600 personal-info-text">Campus</h6>
+                    <h6 class="fw-600 personal-info-text">{{trans('student.tab_privacy.campus')}}</h6>
                 </div>
                 <div>
                     <div class="form-check form-switch">

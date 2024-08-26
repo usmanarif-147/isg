@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->integer('role'); // 1-admin, 2-school , 3-student
+            $table->integer('role');
             $table->tinyInteger('status')->default(1);
             $table->string('roll_number')->nullable();
             $table->string('photo')->nullable();
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->json('student_profile')->nullable();
+            $table->integer('language')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

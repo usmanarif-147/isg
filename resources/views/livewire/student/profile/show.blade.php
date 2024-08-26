@@ -48,7 +48,7 @@
                         <img src="{{ asset('student/images/edit-profile-icon.svg') }}" class="img-fluid" alt="">
                     </div>
                     <div>
-                        <p class="m-0 link-text">Edit Profile</p>
+                        <p class="m-0 link-text">{{trans('student.profile_show.edit_profile')}}</p>
                     </div>
                 </div>
             </a>
@@ -64,7 +64,7 @@
                                     <i class="fa fa-user mobile-hidden" aria-hidden="true"></i>
                                 </div>
                                 <div>
-                                    <p class="m-0">My Details</p>
+                                    <p class="m-0">{{trans('student.profile_show.details')}}</p>
                                 </div>
                             </div>
                         </button>
@@ -75,7 +75,7 @@
                                     <i class="fa fa-link mobile-hidden" aria-hidden="true"></i>
                                 </div>
                                 <div>
-                                    <p class="m-0">Attached links</p>
+                                    <p class="m-0">{{trans('student.profile_show.attached_links')}}</p>
                                 </div>
                             </div>
                         </button>
@@ -86,7 +86,7 @@
                                     <i class="fa fa-address-card-o" aria-hidden="true"></i>
                                 </div>
                                 <div>
-                                    <p class="m-0">Cards</p>
+                                    <p class="m-0">{{trans('student.profile_show.cards')}}</p>
                                 </div>
                             </div>
                         </button>

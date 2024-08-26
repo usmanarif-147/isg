@@ -1,18 +1,18 @@
 <div>
-    <h4 class="fw-600">Card Preview</h4>
+    <h4 class="fw-600">{{trans('student.card.preview')}}</h4>
     <div class="">
         <div class="d-flex justify-content-center align-items-center">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-card px-5 rounded-pill fw-600 {{ $tab == 1 ? 'active' : '' }}"
                         type="button" wire:click="showFrontForm">
-                        Front
+                        {{trans('student.card.front')}}
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link nav-card px-5 rounded-pill fw-600 {{ $tab == 2 ? 'active' : '' }}"
                         type="button" wire:click="showBackForm">
-                        Back
+                        {{trans('student.card.back')}}
                     </button>
                 </li>
             </ul>

@@ -3,7 +3,7 @@
     @if (count($frontSide) || count($backSide))
         <div class="row mt-5">
             <div class="col-4">
-                <h5> <strong>Status:</strong> <span class="{{ $status == 3 ? 'text-danger' : 'text-success' }}">
+                <h5> <strong>{{trans('student.profile_tab_card.status')}}:</strong> <span class="{{ $status == 3 ? 'text-danger' : 'text-success' }}">
                         {{ $status == 1 ? 'Pending' : ($status == 2 ? 'Active' : 'Inactive') }}
                     </span>
                 </h5>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-7 p-0">
                                 <div class="bg-navy-blue d-flex justify-content-center align-items-center">
-                                    <h3 class="m-0">Front Side</h3>
+                                    <h3 class="m-0">{{trans('student.profile_tab_card.front')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-7 p-0">
                                 <div class="bg-navy-blue d-flex justify-content-center align-items-center">
-                                    <h3 class="m-0">Back Side</h3>
+                                    <h3 class="m-0">{{trans('student.profile_tab_card.back')}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
         <div class="row mt-5">
             <div class="card text-center">
                 <div class="card-header">
-                    <h2> Card Not Found </h2>
+                    <h2>{{trans('student.profile_tab_card.not_found')}}</h2>
                 </div>
             </div>
         </div>

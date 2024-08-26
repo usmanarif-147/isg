@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\Language;
 use App\Http\Middleware\School;
 use App\Http\Middleware\Student;
 use Illuminate\Foundation\Application;
@@ -18,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => Admin::class,
             'school' => School::class,
             'student' => Student::class,
+            'language' => Language::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

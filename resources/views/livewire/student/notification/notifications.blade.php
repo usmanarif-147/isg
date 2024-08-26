@@ -3,7 +3,7 @@
     <div class="p-lg-5 p-3">
         <div class="text-end">
             <button class="btn marks-as-read-text fw-500">
-                Mark all as read
+                {{ trans('student.notification.read_button')}}
             </button>
         </div>
         <div class="row">
@@ -11,7 +11,7 @@
                 <ul class="nav nav-pills mb-3 custom-nav" id="pills-tab" role="tablist">
                     <li class="nav-item custom-nav-item" role="presentation">
                         <button class="nav-link active custom-nav-link fw-600" wire:click="showAllNotifications">
-                            All
+                            {{trans('student.notification.all_button')}}
                         </button>
                     </li>
                 </ul>
@@ -56,7 +56,7 @@
                                                         <li>
                                                             <button type="button" class="dropdown-item"
                                                                 wire:click="deleteNotification('{{ $notification->id }}')">
-                                                                Remove
+                                                                {{trans('student.notification.remove_button')}}
                                                             </button>
                                                         </li>
                                                     </ul>
@@ -68,7 +68,7 @@
                             @endforeach
                         @else
                             <div>
-                                Noftifications Not Found
+                               {{trans('student.notification.not_found')}}
                             </div>
                         @endif
                     </div>
