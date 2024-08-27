@@ -16,9 +16,6 @@ Route::get('/', function () {
 });
 
 
-
-
-
 Route::get('/optimize', function () {
     Artisan::call('optimize:clear');
     dd("cache cleared");
