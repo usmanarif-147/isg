@@ -21,20 +21,17 @@ class PlatformSeeder extends Seeder
             'youtube'
         ];
 
-        // Get all image files from the storage directory
         $imageFiles = File::files(storage_path('app/public/platform'));
 
 
         foreach ($platforms as $title) {
-            // Select a random image file
             $randomImage = $imageFiles[array_rand($imageFiles)];
 
-            // Get the URL for the image
             $imageUrl = 'platform/' . $randomImage->getFilename();
 
             Platform::create([
                 'title' => $title,
-                'icon' => $imageUrl, // Store the URL to the image
+                'icon' => $imageUrl,
             ]);
         }
     }

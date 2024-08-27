@@ -15,9 +15,7 @@ class SchoolSeeder extends Seeder
      */
     public function run(): void
     {
-
-        for ($i = 0; $i < 5; $i++) {
-
+        for ($i = 0; $i < 50; $i++) {
             $school = User::create([
                 'name' => 'school_' . $i,
                 'email' => 'school_' . $i . '_@gmail.com',
