@@ -15,6 +15,23 @@
                         </form>
                     </div>
                     <div class="col-auto">
+                        <select class="form-select w-auto" wire:model.live="status">
+                            <option value="">Status</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+
+                        <select class="form-select w-auto">
+                            <option selected="" value="option-1">All</option>
+                            <option value="option-2">This week</option>
+                            <option value="option-3">This month</option>
+                            <option value="option-4">Last 3 months</option>
+
+                        </select>
+                    </div>
+                    <div class="col-auto">
                         <a class="btn app-btn-primary" href="{{ route('admin.school.create') }}">
                             Create
                         </a>
@@ -68,7 +85,8 @@
                                 @foreach ($schools as $school)
                                     <tr>
                                         <td class="cell">
-                                            <img src="{{ $school->photo ? asset('storage/' . $school->photo) : asset('admin/images/school-avatar.png') }}" height="60" width="70" alt="">
+                                            <img src="{{ $school->photo ? asset('storage/' . $school->photo) : asset('admin/images/school-avatar.png') }}"
+                                                height="60" width="70" alt="">
                                         </td>
                                         <td class="cell">
                                             <span class="truncate">

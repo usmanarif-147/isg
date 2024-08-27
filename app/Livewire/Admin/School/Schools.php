@@ -16,6 +16,8 @@ class Schools extends Component
 
     public $heading, $total;
 
+    public $status = null;
+
     // confirm modal variables
     public $method, $btnText, $btnColor, $body;
 
@@ -133,48 +135,33 @@ class Schools extends Component
     public function updatedSearch()
     {
         $this->resetPage();
-        // $this->sortPrice = 0;
-        // $this->sortQuantity = 0;
-        // $this->sortFeature = 0;
-        // $this->sortStatus = 0;
     }
 
     /**
      * Schools Data
      */
-    private function getData()
-    {
-        $search = $this->search;
-        // $sortPrice = $this->sortPrice;
-        // $sortDiscount = $this->sortDiscount;
-        // $sortQuantity = $this->sortQuantity;
-        // $sortFeature = $this->sortFeature;
-        // $sortStatus = $this->sortStatus;
 
-        $schools = User::withCount('students')
-            ->when($search, function ($query) use ($search) {
-                $query->where('email', 'like', "%$search%");
-            })
-            // ->when($sortStatus, function ($query) use ($sortStatus) {
-            //     $query->orderBy('status', $sortStatus);
-            // })
-            // ->when($sortPrice, function ($query) use ($sortPrice) {
-            //     $query->orderBy('price', $sortPrice);
-            // })
-            // ->when($sortDiscount, function ($query) use ($sortDiscount) {
-            //     $query->orderBy('discount', $sortDiscount);
-            // })
-            // ->when($sortQuantity, function ($query) use ($sortQuantity) {
-            //     $query->orderBy('quantity', $sortQuantity);
-            // })
-            // ->when($sortFeature, function ($query) use ($sortFeature) {
-            //     $query->orderBy('is_featured', $sortFeature);
-            // })
-            ->where('role', 2)
-            ->orderBy('created_at', 'desc');
+     private function getData()
+     {
+         $search = $this->search;
+         $status = $this->status;
 
-        return $schools->paginate(10);
-    }
+         $schools = User::withCount('students')
+             ->when($search, function ($query) use ($search) {
+                 $query->where('email', 'like', "%$search%");
+             })
+             ->when($status !== null, function ($query) use ($status) {
+                 if ($status !== '') {
+                     $query->where('status', $status);
+                 }
+             })
+             ->where('role', 2)
+             ->orderBy('created_at', 'desc');
+
+         return $schools->paginate(10);
+     }
+
+
 
     /**
      * Render Method
