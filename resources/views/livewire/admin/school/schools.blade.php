@@ -23,12 +23,11 @@
                     </div>
                     <div class="col-auto">
 
-                        <select class="form-select w-auto">
-                            <option selected="" value="option-1">All</option>
-                            <option value="option-2">This week</option>
-                            <option value="option-3">This month</option>
-                            <option value="option-4">Last 3 months</option>
-
+                        <select class="form-select w-auto" wire:model.live="dateRange">
+                            <option value="">All</option>
+                            <option value="1">This week</option>
+                            <option value="2">This month</option>
+                            <option value="3">Last 3 months</option>
                         </select>
                     </div>
                     <div class="col-auto">

@@ -5,7 +5,7 @@ namespace App\Livewire\Admin\School;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
-
+use Carbon\Carbon;
 class Schools extends Component
 {
     use WithPagination;
@@ -16,7 +16,9 @@ class Schools extends Component
 
     public $heading, $total;
 
-    public $status = null;
+    public $status = '';
+
+    public $dateRange = '';
 
     // confirm modal variables
     public $method, $btnText, $btnColor, $body;
@@ -145,14 +147,37 @@ class Schools extends Component
      {
          $search = $this->search;
          $status = $this->status;
+         $dateRange = $this->dateRange;
 
          $schools = User::withCount('students')
              ->when($search, function ($query) use ($search) {
                  $query->where('email', 'like', "%$search%");
              })
-             ->when($status !== null, function ($query) use ($status) {
-                 if ($status !== '') {
-                     $query->where('status', $status);
+             ->when($status !== '', function ($query) use ($status) {
+                 $query->where('status', $status);
+             })
+             ->when($dateRange, function ($query) use ($dateRange) {
+                 $now = Carbon::now();
+                 switch ($dateRange) {
+                     case '1': // This week
+                         $startDate = $now->startOfWeek();
+                         $endDate = $now->endOfWeek();
+                         break;
+                     case '2': // This month
+                         $startDate = $now->startOfMonth();
+                         $endDate = $now->endOfMonth();
+                         break;
+                     case '3': // Last 3 months
+                         $startDate = $now->subMonths(3)->startOfMonth();
+                         $endDate = $now->endOfMonth();
+                         break;
+                     default: // No filter
+                         $startDate = null;
+                         $endDate = null;
+                 }
+
+                 if ($startDate && $endDate) {
+                     $query->whereBetween('created_at', [$startDate, $endDate]);
                  }
              })
              ->where('role', 2)
