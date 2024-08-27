@@ -139,58 +139,47 @@ class Schools extends Component
         $this->resetPage();
     }
 
-    /**
-     * Schools Data
-     */
-
      private function getData()
      {
          $search = $this->search;
          $status = $this->status;
          $dateRange = $this->dateRange;
-
-         $schools = User::withCount('students')
-             ->when($search, function ($query) use ($search) {
-                 $query->where('email', 'like', "%$search%");
-             })
-             ->when($status !== '', function ($query) use ($status) {
-                 $query->where('status', $status);
-             })
-             ->when($dateRange, function ($query) use ($dateRange) {
-                 $now = Carbon::now();
-                 switch ($dateRange) {
-                     case '1': // This week
-                         $startDate = $now->startOfWeek();
-                         $endDate = $now->endOfWeek();
-                         break;
-                     case '2': // This month
-                         $startDate = $now->startOfMonth();
-                         $endDate = $now->endOfMonth();
-                         break;
-                     case '3': // Last 3 months
-                         $startDate = $now->subMonths(3)->startOfMonth();
-                         $endDate = $now->endOfMonth();
-                         break;
-                     default: // No filter
-                         $startDate = null;
-                         $endDate = null;
-                 }
-
-                 if ($startDate && $endDate) {
-                     $query->whereBetween('created_at', [$startDate, $endDate]);
-                 }
-             })
+         $query = User::withCount('students')
              ->where('role', 2)
              ->orderBy('created_at', 'desc');
+         if ($search) {
+             $query->where('email', 'like', "%$search%");
+         }
+         if ($status !== '') {
+             $query->where('status', $status);
+         }
+         if ($dateRange) {
+             $now = Carbon::now();
+             switch ($dateRange) {
+                 case '1':
+                     $startDate = $now->startOfWeek();
+                     $endDate = $now->endOfWeek();
+                     break;
+                 case '2':
+                     $startDate = $now->startOfMonth();
+                     $endDate = $now->endOfMonth();
+                     break;
+                 case '3':
+                     $startDate = $now->subMonths(3)->startOfMonth();
+                     $endDate = Carbon::now()->endOfMonth();
+                     break;
+                 default:
+                     $startDate = $endDate = null;
+             }
 
-         return $schools->paginate(10);
+             if ($startDate && $endDate) {
+                 $query->whereBetween('created_at', [$startDate, $endDate]);
+             }
+         }
+
+         return $query->paginate(10);
      }
 
-
-
-    /**
-     * Render Method
-     */
     public function render()
     {
         $this->schools = $this->getData();
