@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
-            PlatformSeeder::class,
-            SchoolSeeder::class,
-            AnnouncementSeeder::class,
-            StudentSeeder::class
+            // PlatformSeeder::class,
+            // SchoolSeeder::class,
+            // AnnouncementSeeder::class,
+            // StudentSeeder::class
 
         ]);
         // User::factory(10)->create();
