@@ -50,7 +50,7 @@
         <div class="row">
             <form wire:submit.prevent="updateProfile">
                 @csrf
-                <h5 class="fw-700 pt-3 pb-2">About Me</h5>
+                <h5 class="fw-700 pt-3 pb-2">{{trans('student.edit_profile.about_me')}}</h5>
                 <div class="mb-3">
                     <textarea wire:model.live="about_me" class="form-control bg-transparent" rows="5"></textarea>
                     @error('about_me')
@@ -58,14 +58,14 @@
                     @enderror
                 </div>
 
-                <h5 class="fw-700 py-3 m-0">Personal Information</h5>
+                <h5 class="fw-700 py-3 m-0">{{trans('student.edit_profile.personal_information')}}</h5>
                 <div class="container">
                     <div class="row gy-3 mb-3">
                         <div class="col-12 col-lg-6">
                             <div class="form-floating">
                                 <input wire:model.live="full_name" type="text" class="form-control input-radius"
                                     id="full_name">
-                                <label for="full_name">Full Name</label>
+                                <label for="full_name">{{trans('student.edit_profile.full_name')}}</label>
                                 @error('full_name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -84,14 +84,14 @@
                         <div class="col-12 col-lg-6">
                             <div class="form-floating">
                                 <select class="form-select" id="floatingSelect" wire:model.live="blood_group">
-                                    <option selected>Select Blood Group</option>
+                                    <option selected>{{trans('student.edit_profile.select_blood')}}</option>
                                     @foreach (get_blood_groups() as $group)
                                         <option value="{{ $group }}"
                                             {{ $group == $blood_group ? 'selected' : '' }}>{{ $group }}
                                         </option>
                                     @endforeach
                                 </select>
-                                <label for="blood_group">Blood Group</label>
+                                <label for="blood_group">{{trans('student.edit_profile.blood')}}</label>
                                 @error('blood_group')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -111,7 +111,7 @@
                             <div class="form-floating">
                                 <input wire:model.live="phone" type="text" class="form-control input-radius"
                                     id="phone">
-                                <label for="phone">Phone</label>
+                                <label for="phone">{{trans('student.edit_profile.phone')}}</label>
                                 @error('phone')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -121,14 +121,14 @@
 
                             <div class="form-floating">
                                 <select class="form-select" id="floatingSelect" wire:model.live="nationality">
-                                    <option selected>Select Nationaltiy</option>
+                                    <option selected>{{trans('student.edit_profile.nationality')}}</option>
                                     @foreach (get_nationalities() as $n)
                                         <option value="{{ $n }}"
                                             {{ $n == $nationality ? 'selected' : '' }}>{{ $n }}
                                         </option>
                                     @endforeach
                                 </select>
-                                <label for="nationality">Nationality</label>
+                                <label for="nationality">{{trans('student.edit_profile.label_nationlity')}}</label>
                                 @error('nationality')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -138,11 +138,11 @@
 
                             <div class="form-floating">
                                 <select class="form-select" id="floatingSelect" wire:model.live="gender">
-                                    <option value="0" selected>Select Gender</option>
+                                    <option value="0" selected>{{trans('student.edit_profile.select_gender')}}</option>
                                     <option value="Male" {{ $gender == 'Male' ? 'selected' : '' }}>Male</option>
                                     <option value="Female" {{ $gender == 'Female' ? 'selected' : '' }}>Female</option>
                                 </select>
-                                <label for="nationality">Gender</label>
+                                <label for="nationality">{{trans('student.edit_profile.label_gender')}}</label>
                                 @error('gender')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -169,7 +169,7 @@
                             <div class="col-6">
                                 <button type="submit" wire:loading.attr="disabled"
                                     class="btn btn-custom-bg text-white w-100 px-5">
-                                    Save
+                                    {{trans('student.edit_profile.save')}}
                                 </button>
                             </div>
                         </div>

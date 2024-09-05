@@ -2,8 +2,8 @@
     <div class="banner-bg">
         <div class="row align-items-center">
             <div class="col-12 col-lg-6 px-5 py-4">
-                <p class="fs-13 light-dark">September 4, 2023</p>
-                <h3 class="text-white pt-lg-5 pt-2">Welcome back, {{ $full_name }}!</h3>
+                <p class="fs-13 light-dark">{{trans('student.dashboard.date')}}</p>
+                <h3 class="text-white pt-lg-5 pt-2">{{trans('student.dashboard.name')}} {{ $full_name }}!</h3>
                 <p class="light-dark fs-13 m-0">
                     {{ $email }}
                 </p>
@@ -21,7 +21,7 @@
                 <div class="col-12 col-lg-4">
                     <a href="#" class="text-decoration-none">
                         <div class="card-shadow p-3">
-                            <p class="m-0 liver-color fw-500">Profile Views</p>
+                            <p class="m-0 liver-color fw-500">{{trans('student.dashboard.profile_Views')}}</p>
                             <h2 class="text-center liver-color">0</h2>
                         </div>
                     </a>
@@ -29,7 +29,7 @@
                 <div class="col-12 col-lg-4">
                     <a href="#" class="text-decoration-none">
                         <div class="card-shadow p-3">
-                            <p class="m-0 liver-color fw-500">Link Taps</p>
+                            <p class="m-0 liver-color fw-500">{{trans('student.dashboard.link_taps')}}</p>
                             <h2 class="text-center liver-color">0</h2>
                         </div>
                     </a>
@@ -37,7 +37,7 @@
                 <div class="col-12 col-lg-4">
                     <a href="#" class="text-decoration-none">
                         <div class="card-shadow p-3">
-                            <p class="m-0 liver-color fw-500">Leads</p>
+                            <p class="m-0 liver-color fw-500">{{trans('student.dashboard.leads')}}</p>
                             <h2 class="text-center liver-color">0</h2>
                         </div>
                     </a>
@@ -45,7 +45,7 @@
 
                 <div class="col-12">
                     <div class="card radius-20 shadow p-4 bg-white">
-                        <h6>Leads</h6>
+                        <h6>{{trans('student.dashboard.chart_leads')}}</h6>
                         <canvas id="myChart" width="717" height="358"
                             style="display: block; box-sizing: border-box; height: 358px; width: 717px;"></canvas>
                     </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="col-12 col-lg-3">
             <div class="card-shadow p-lg-3 p-4">
-                <p class="liver-color">Top Taped Links</p>
+                <p class="liver-color">{{trans('student.dashboard.top_taped_links')}}</p>
                 @foreach ($activePlatforms as $platform)
                     <div class="d-flex justify-content-between align-items-center my-3">
                         <div>

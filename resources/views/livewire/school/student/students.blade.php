@@ -47,8 +47,7 @@
                                     @foreach ($students as $student)
                                         <tr>
                                             <td class="cell">
-                                                <img src="{{ Storage::url($student->photo) }}" height="60"
-                                                    width="70" alt="">
+                                                <img src="{{ $student->photo ? asset('storage/' . $student->photo) : asset('admin/images/user-avatar.png') }}" height="60" width="70" alt="">
                                             </td>
                                             <td class="cell">
                                                 <span class="truncate">

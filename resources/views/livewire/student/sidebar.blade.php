@@ -19,7 +19,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'dashboard' ? 'text-white' : 'sidebar-link' }} m-0">
-                        Dashboard
+                        {{trans('student.sidebar.dashboard')}}
                     </p>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'profile' ? 'text-white' : 'sidebar-link' }} m-0">
-                        Profile
+                        {{trans('student.sidebar.profile')}}
                     </p>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'share' ? 'text-white' : 'sidebar-link' }} m-0">
-                        Share
+                        {{trans('student.sidebar.share')}}
                     </p>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'product' ? 'text-white' : 'sidebar-link' }} m-0">
-                        Product
+                        {{trans('student.sidebar.product')}}
                     </p>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'notification' ? 'text-white' : 'sidebar-link' }} m-0">
-                        Notification
+                        {{trans('student.sidebar.notification')}}
                     </p>
                 </div>
                 @if ($unreadNotifications)
@@ -120,7 +120,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'announcement' ? 'text-white' : 'sidebar-link' }} m-0">
-                        Announcement
+                        {{trans('student.sidebar.announcement')}}
                     </p>
                 </div>
                 @if ($totalNewAnnouncements)
@@ -144,7 +144,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'setting' ? 'text-white' : 'sidebar-link' }} m-0">
-                        Settings
+                        {{trans('student.sidebar.settings')}}
                     </p>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                     </div>
                     <div>
                         <p class="sidebar-link m-0">
-                            Logout
+                            {{trans('student.sidebar.logout')}}
                         </p>
                     </div>
                 </div>

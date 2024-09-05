@@ -65,7 +65,8 @@
             @endif
         @endforeach
     </div>
-    <button type="submit" class="btn btn-custom-bg text-white px-5 my-2" {{ $cardStatus == 2 ? 'disabled' : '' }}>
-        Save Back Side
+    <button type="submit" class="btn btn-custom-bg text-white px-5 my-2"
+        {{ count($backFormFields) === 0 || $cardStatus == 2 ? 'disabled' : '' }}>
+        {{ trans('student.card.back_side') }}
     </button>
 </form>

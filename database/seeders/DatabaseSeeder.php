@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
+use Database\Seeders\StudentSeeder;
 use Database\Seeders\Admin\AdminSeeder;
+use Database\Seeders\School\SchoolSeeder;
 use Database\Seeders\Admin\PlatformSeeder;
 use Database\Seeders\School\AnnouncementSeeder;
-use Database\Seeders\School\SchoolSeeder;
-use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,10 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
-            // PlatformSeeder::class,
-            // SchoolSeeder::class,
-            // AnnouncementSeeder::class
-            // StudentSeeder::class,
+            PlatformSeeder::class,
+            SchoolSeeder::class,
+            AnnouncementSeeder::class,
+            StudentSeeder::class
 
         ]);
         // User::factory(10)->create();

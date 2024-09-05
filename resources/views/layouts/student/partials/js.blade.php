@@ -11,6 +11,10 @@
  {{-- Sweet Alert --}}
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+ {{--Student js --}}
+
+ <script src="{{asset('student/js/student.js')}}"></script>
+
  <!-- Chart JS -->
 
  <script>
@@ -29,7 +33,7 @@
                  "29-05",
              ],
              datasets: [{
-                 label: "Profile Views",
+                 label: "{{trans('student.dashboard.profile_Views')}}",
                  data: [12, 19, 3, 5, 2, 3, 6],
                  borderWidth: 1,
              }, ],

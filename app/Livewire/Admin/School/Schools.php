@@ -5,7 +5,7 @@ namespace App\Livewire\Admin\School;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
-
+use Carbon\Carbon;
 class Schools extends Component
 {
     use WithPagination;
@@ -15,6 +15,10 @@ class Schools extends Component
     public $schoolId;
 
     public $heading, $total;
+
+    public $status = '';
+
+    public $dateRange = '';
 
     // confirm modal variables
     public $method, $btnText, $btnColor, $body;
@@ -133,52 +137,49 @@ class Schools extends Component
     public function updatedSearch()
     {
         $this->resetPage();
-        // $this->sortPrice = 0;
-        // $this->sortQuantity = 0;
-        // $this->sortFeature = 0;
-        // $this->sortStatus = 0;
     }
 
-    /**
-     * Schools Data
-     */
-    private function getData()
-    {
-        $search = $this->search;
-        // $sortPrice = $this->sortPrice;
-        // $sortDiscount = $this->sortDiscount;
-        // $sortQuantity = $this->sortQuantity;
-        // $sortFeature = $this->sortFeature;
-        // $sortStatus = $this->sortStatus;
+     private function getData()
+     {
+         $search = $this->search;
+         $status = $this->status;
+         $dateRange = $this->dateRange;
+         $query = User::withCount('students')
+             ->where('role', 2)
+             ->orderBy('created_at', 'desc');
+         if ($search) {
+             $query->where('email', 'like', "%$search%");
+         }
+         if ($status !== '') {
+             $query->where('status', $status);
+         }
+         if ($dateRange) {
+             $now = Carbon::now();
+             switch ($dateRange) {
+                 case '1':
+                     $startDate = $now->startOfWeek();
+                     $endDate = $now->endOfWeek();
+                     break;
+                 case '2':
+                     $startDate = $now->startOfMonth();
+                     $endDate = $now->endOfMonth();
+                     break;
+                 case '3':
+                     $startDate = $now->subMonths(3)->startOfMonth();
+                     $endDate = Carbon::now()->endOfMonth();
+                     break;
+                 default:
+                     $startDate = $endDate = null;
+             }
 
-        $schools = User::withCount('students')
-            ->when($search, function ($query) use ($search) {
-                $query->where('email', 'like', "%$search%");
-            })
-            // ->when($sortStatus, function ($query) use ($sortStatus) {
-            //     $query->orderBy('status', $sortStatus);
-            // })
-            // ->when($sortPrice, function ($query) use ($sortPrice) {
-            //     $query->orderBy('price', $sortPrice);
-            // })
-            // ->when($sortDiscount, function ($query) use ($sortDiscount) {
-            //     $query->orderBy('discount', $sortDiscount);
-            // })
-            // ->when($sortQuantity, function ($query) use ($sortQuantity) {
-            //     $query->orderBy('quantity', $sortQuantity);
-            // })
-            // ->when($sortFeature, function ($query) use ($sortFeature) {
-            //     $query->orderBy('is_featured', $sortFeature);
-            // })
-            ->where('role', 2)
-            ->orderBy('created_at', 'desc');
+             if ($startDate && $endDate) {
+                 $query->whereBetween('created_at', [$startDate, $endDate]);
+             }
+         }
 
-        return $schools->paginate(10);
-    }
+         return $query->paginate(10);
+     }
 
-    /**
-     * Render Method
-     */
     public function render()
     {
         $this->schools = $this->getData();

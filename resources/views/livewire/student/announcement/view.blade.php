@@ -27,7 +27,7 @@
                 <li class="nav-item custom-nav-item" role="presentation">
                     <button type="button" class="nav-link {{ $tab == 1 ? 'active' : '' }} custom-nav-link fw-600"
                         wire:click="getNewAnnouncements">
-                        New
+                        {{trans('student.announcement.new')}}
                         @if ($totalNewAnnouncements)
                             <span class="text-danger fw-bold">
                                 ({{ $totalNewAnnouncements }})
@@ -38,7 +38,7 @@
                 <li class="nav-item custom-nav-item" role="presentation">
                     <button type="button" class="nav-link {{ $tab == 2 ? 'active' : '' }} custom-nav-link fw-600 px-5"
                         wire:click="getOldAnnouncements">
-                        Old
+                        {{trans('student.announcement.old')}}
                         @if ($totalOldAnnouncements)
                             <span class="text-danger fw-bold">
                                 ({{ $totalOldAnnouncements }})
@@ -64,7 +64,7 @@
                                             </span>
                                             <a href="javascript:void(0)" class="m-3"
                                                 wire:click="markAsRead('{{ $announcement->id }}')">
-                                                Read
+                                                {{trans('student.announcement.read')}}
                                             </a>
                                         </p>
                                         <p class="text-end m-0"> {{ defaultDateFormat($announcement->created_at) }}
@@ -75,7 +75,7 @@
                         @else
                             <div class="border border-1 border-dark p-4 radius-20 my-3">
                                 <div class="row align-items-center">
-                                    No New Announcement Available
+                                    {{trans('student.announcement.not_found')}}
                                 </div>
                             </div>
                         @endif
@@ -96,7 +96,7 @@
                                                 <div>
                                                     <button class="btn btn-sm btn-danger"
                                                         wire:click="remove('{{ $announcement->id }}')">
-                                                        Remove
+                                                        {{trans('student.announcement.remove_button')}}
                                                     </button>
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@
                                             </span>
                                             <a href="javascript:void(0)" class="m-3"
                                                 wire:click="read('{{ $announcement->id }}')">
-                                                Read
+                                                {{trans('student.announcement.read')}}
                                             </a>
                                         </p>
                                         <p class="text-end m-0"> {{ defaultDateFormat($announcement->created_at) }}
@@ -118,7 +118,7 @@
                         @else
                             <div class="border border-1 border-dark p-4 radius-20 my-3">
                                 <div class="row align-items-center">
-                                    No Old Announcement Available
+                                    {{trans('student.announcement.no_old')}}
                                 </div>
                             </div>
                         @endif
