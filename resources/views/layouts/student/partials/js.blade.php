@@ -11,42 +11,9 @@
  {{-- Sweet Alert --}}
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
- {{--Student js --}}
+ {{-- Student js --}}
 
- <script src="{{asset('student/js/student.js')}}"></script>
-
- <!-- Chart JS -->
-
- <script>
-     const ctx = document.getElementById("myChart");
-
-     new Chart(ctx, {
-         type: "bar",
-         data: {
-             labels: [
-                 "23-05",
-                 "24-05",
-                 "25-05",
-                 "26-05",
-                 "27-05",
-                 "28-05",
-                 "29-05",
-             ],
-             datasets: [{
-                 label: "{{trans('student.dashboard.profile_Views')}}",
-                 data: [12, 19, 3, 5, 2, 3, 6],
-                 borderWidth: 1,
-             }, ],
-         },
-         options: {
-             scales: {
-                 y: {
-                     beginAtZero: true,
-                 },
-             },
-         },
-     });
- </script>
+ <script src="{{ asset('student/js/student.js') }}"></script>
 
  <script>
      document.addEventListener("DOMContentLoaded", function() {

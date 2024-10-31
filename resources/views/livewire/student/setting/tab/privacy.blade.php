@@ -23,15 +23,15 @@
                                 @elseif(array_key_exists('nationality', $item))
                                     {{ trans('student.tab_privacy.nationality') }}
                                 @elseif(array_key_exists('about_me', $item))
-                                    About Me
+                                    {{ trans('student.tab_privacy.about_me') }}
                                 @elseif(array_key_exists('full_name', $item))
-                                    Full Name
+                                    {{ trans('student.tab_privacy.full_name') }}
                                 @elseif(array_key_exists('bio', $item))
                                     Bio
                                 @elseif(array_key_exists('profile_photo', $item))
-                                    Profile Photo
+                                    {{ trans('student.tab_privacy.profile_photo') }}
                                 @elseif(array_key_exists('cover_photo', $item))
-                                    Cover Photo
+                                    {{ trans('student.tab_privacy.cover_photo') }}
                                 @else
                                     {{ ucfirst($key) }}
                                 @endif

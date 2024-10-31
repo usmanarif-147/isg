@@ -5,6 +5,7 @@ namespace App\Livewire\School\Student;
 use App\Models\Platform;
 use App\Models\RollNumberPrefix;
 use App\Models\StudentCard;
+use App\Models\StudentCardHistory;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
@@ -20,12 +21,12 @@ class Create extends Component
     public $platforms;
 
     public
-        $first_name,
-        $last_name,
-        $email,
-        $password,
-        $selected_platforms = [],
-        $photo;
+    $first_name,
+    $last_name,
+    $email,
+    $password,
+    $selected_platforms = [],
+    $photo;
 
     public function mount()
     {
@@ -38,12 +39,12 @@ class Create extends Component
     protected function rules()
     {
         return [
-            'first_name'            =>      ['required'],
-            'last_name'             =>      ['required'],
-            'selected_platforms'    =>      ['sometimes', 'array'],
-            'email'                 =>      ['required', 'email', 'unique:users,email'],
-            'password'              =>      ['required'],
-            'photo'                 =>      ['required', 'image', 'mimes:jpeg,jpg,png,webp'],
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'selected_platforms' => ['sometimes', 'array'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required'],
+            'photo' => ['required', 'image', 'mimes:jpeg,jpg,png,webp'],
         ];
     }
 
@@ -71,17 +72,27 @@ class Create extends Component
 
         $user = User::create([
             'school_id' => auth()->id(),
-            'first_name'  => $this->first_name,
-            'last_name'  => $this->last_name,
-            'email'  => $this->email,
-            'roll_number'  => $prefix . '_' . \Str::uuid(),
-            'photo'  => $this->photo,
-            'password'  => bcrypt($this->password),
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'roll_number' => $prefix . '_' . \Str::uuid(),
+            'photo' => $this->photo,
+            'password' => bcrypt($this->password),
             'role' => 3,
             'student_profil' => []
         ]);
 
-        StudentCard::create([
+        $studentCard = StudentCard::create([
+            'school_id' => $user->school_id,
+            'student_id' => $user->id,
+            'front_side' => [],
+            'back_side' => []
+        ]);
+
+        $id = $studentCard->id;
+
+        StudentCardHistory::create([
+            'card_id' => $id,
             'school_id' => $user->school_id,
             'student_id' => $user->id,
             'front_side' => [],
@@ -95,7 +106,7 @@ class Create extends Component
         $this->reset(['first_name', 'last_name', 'email', 'photo', 'password', 'selected_platforms']);
 
         $this->dispatch('swal:modal', [
-            'title' =>  'Success',
+            'title' => 'Success',
             'text' => 'Student Create Successfully.',
             'icon' => 'success'
         ]);

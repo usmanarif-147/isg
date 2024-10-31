@@ -32,7 +32,7 @@
                     <div class="py-4">
                         @foreach ($platforms as $platform)
                             <div class="bg-white p-2 rounded social-links rounded-5 my-2">
-                                <a href="#" target="_blank"
+                                <a wire:click.prevent="platformClick('{{ $platform->id }}', '{{ $platform->path }}')"
                                     class="d-flex gap-2 align-items-center text-decoration-none">
                                     <div class="social-media-icon">
                                         <img src="{{ asset('storage/' . $platform->icon) }}"
@@ -51,4 +51,9 @@
             </div>
         </div>
     </div>
+    <script>
+        window.addEventListener('navigateTo', event => {
+            window.open(event.detail[0].url, '_blank');
+        });
+    </script>
 </div>

@@ -58,21 +58,59 @@
                                                     <span class="badge bg-success">
                                                         Active
                                                     </span>
-                                                @else
+                                                @elseif($card->status == 3)
                                                     <span class="badge bg-danger">
                                                         Inactive
+                                                    </span>
+                                                @elseif($card->status == 4)
+                                                    <span class="badge bg-warning">
+                                                        Updation in Progress
+                                                    </span>
+                                                @else
+                                                    <span class="badge bg-success">
+                                                        Updated
                                                     </span>
                                                 @endif
                                             </td>
                                             <td class="cell">
-                                                <button class="btn btn-sm btn-danger text-white"
-                                                    wire:click="confirmDeactivateCard({{ $card->student->id }}, {{ $card->id }})">
-                                                    Deactivate
-                                                </button>
-                                                <button class="btn btn-sm btn-success text-white"
-                                                    wire:click="confirmActivateCard({{ $card->student->id }}, {{ $card->id }})">
-                                                    Activate
-                                                </button>
+                                                @if ($card->status == 1)
+                                                    <button class="btn btn-sm btn-danger text-white"
+                                                        wire:click="confirmDeactivateCard({{ $card->student->id }}, {{ $card->id }})">
+                                                        Deactivate
+                                                    </button>
+                                                    <button class="btn btn-sm btn-success text-white"
+                                                        wire:click="confirmActivateCard({{ $card->student->id }}, {{ $card->id }})">
+                                                        Activate
+                                                    </button>
+                                                @elseif ($card->status == 2)
+                                                    <button class="btn btn-sm btn-danger text-white"
+                                                        wire:click="confirmDeactivateCard({{ $card->student->id }}, {{ $card->id }})">
+                                                        Deactivate
+                                                    </button>
+                                                @elseif($card->status == 3)
+                                                    <button class="btn btn-sm btn-success text-white"
+                                                        wire:click="confirmActivateCard({{ $card->student->id }}, {{ $card->id }})">
+                                                        Activate
+                                                    </button>
+                                                @elseif($card->status == 4)
+                                                    <span class="badge bg-warning">No Action</span>
+                                                    {{-- @else
+                                                    <button class="btn btn-sm btn-success text-white">
+                                                        Accept
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger text-white">
+                                                        Reject
+                                                    </button>
+                                                    <button class="btn btn-sm btn-warning text-white">
+                                                        View Updation
+                                                    </button> --}}
+                                                @endif
+                                                @if ($card->status != 5)
+                                                    <button class="btn btn-sm btn-success text-white"
+                                                        wire:click="viewCard({{ $card->student->id }}, {{ $card->id }})">
+                                                        View
+                                                    </button>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -129,9 +167,161 @@
         </div>
     </div>
 
+    {{-- view Card Model --}}
+    <div wire:ignore.self class="modal fade" id="viewPopup" tabindex="-1" aria-labelledby="viewPopupLabel"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="viewPopupLabel">View Card</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @if (count($frontSide) || count($backSide))
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="border border-1 shadow position-relative rounded-3 pb-5 student-card mt-5">
+                                    <div class="container p-0">
+                                        <div class="row align-items-center m-1">
+                                            <div class="col-5 p-0">
+                                                <div
+                                                    class="bg-charcol d-flex justify-content-center align-items-center">
+                                                    <div class="d-flex gap-2 align-items-center">
+                                                        <div>
+                                                            <img src="{{ asset(Storage::url($schoolLogo)) }}"
+                                                                class="img-fluid" alt="" height="80"
+                                                                width="80">
+                                                        </div>
+                                                        <div>
+                                                            <p class="m-0">{{ $schoolName }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-7 p-0">
+                                                <div
+                                                    class="bg-navy-blue d-flex justify-content-center align-items-center">
+                                                    <h3 class="m-0">{{ trans('student.profile_tab_card.front') }}
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3 mx-5 my-2">
+                                        <div>
+                                            <div
+                                                class="profile-image-card border-3 shadow border-white border rounded-circle">
+                                                <img src="{{ $frontSidePhoto }}" class="rounded-circle"
+                                                    alt="" height="150" width="150">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            @foreach ($frontSide as $key => $value)
+                                                @if ($key != 'photo')
+                                                    @if ($key == 'gender')
+                                                        <p class="fw-600 m-0">
+                                                            {{ strtoupper(str_replace('_', ' ', $key)) }}</p>
+                                                        <h5 class="navy-blue fw-bold">
+                                                            {{ $value == 1 ? 'Female' : 'Male' }}</h5>
+                                                    @else
+                                                        <p class="fw-600 m-0">
+                                                            {{ strtoupper(str_replace('_', ' ', $key)) }}</p>
+                                                        <h5 class="navy-blue fw-bold">{{ $value }}</h5>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    {{-- <div class="position-absolute card-bottom">
+                                        <img src="{{ asset('student/images/card-bottom.svg') }}" class="img-fluid"
+                                            alt="">
+                                    </div> --}}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="border border-1 shadow position-relative rounded-3 pb-5 student-card mt-5">
+                                    <div class="container p-0">
+                                        <div class="row align-items-center m-1">
+                                            <div class="col-5 p-0">
+                                                <div
+                                                    class="bg-charcol d-flex justify-content-center align-items-center">
+                                                    <div class="d-flex gap-2 align-items-center">
+                                                        <div>
+                                                            <img src="{{ asset(Storage::url($schoolLogo)) }}"
+                                                                class="img-fluid" alt="" height="80"
+                                                                width="80">
+                                                        </div>
+                                                        <div>
+                                                            <p class="m-0">{{ $schoolName }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-7 p-0">
+                                                <div
+                                                    class="bg-navy-blue d-flex justify-content-center align-items-center">
+                                                    <h3 class="m-0">{{ trans('student.profile_tab_card.back') }}
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3 mx-5 my-2">
+                                        <div>
+                                            <div
+                                                class="profile-image-card border-3 shadow border-white border rounded-circle">
+                                                <img src="{{ $backSidePhoto }}" class="rounded-circle"
+                                                    alt="" height="150" width="150">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            @foreach ($backSide as $key => $value)
+                                                @if ($key != 'photo')
+                                                    @if ($key == 'gender')
+                                                        <p class="fw-600 m-0">
+                                                            {{ strtoupper(str_replace('_', ' ', $key)) }}</p>
+                                                        <h5 class="navy-blue fw-bold">
+                                                            {{ $value == 1 ? 'Female' : 'Male' }}</h5>
+                                                    @else
+                                                        <p class="fw-600 m-0">
+                                                            {{ strtoupper(str_replace('_', ' ', $key)) }}</p>
+                                                        <h5 class="navy-blue fw-bold">{{ $value }}</h5>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    {{-- <div class="position-absolute card-bottom">
+                                        <img src="{{ asset('student/images/card-bottom.svg') }}" class="img-fluid"
+                                            alt="">
+                                    </div> --}}
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row mt-5">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h2>{{ trans('student.profile_tab_card.not_found') }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         window.addEventListener('confirm-popup', event => {
             $('#confirmPopup').modal('show')
+        });
+
+        window.addEventListener('view-popup', event => {
+            $('#viewPopup').modal('show')
         });
 
         window.addEventListener('reason-popup', event => {

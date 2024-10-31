@@ -12,6 +12,8 @@ class Dashboard extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected $schools;
 
     public $totalSchools, $totalStudents, $totalPlatforms, $totalCards;

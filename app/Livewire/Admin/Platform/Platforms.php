@@ -10,6 +10,8 @@ class Platforms extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected $platforms;
 
     public $platformId;

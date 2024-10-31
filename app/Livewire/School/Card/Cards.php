@@ -4,6 +4,7 @@ namespace App\Livewire\School\Card;
 
 use App\Models\Notification;
 use App\Models\StudentCard;
+use App\Models\Template;
 use App\Models\User;
 use App\Notifications\StudentCardNotifications;
 use Livewire\Component;
@@ -13,7 +14,13 @@ class Cards extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected $studentCards;
+    public $schoolName, $schoolLogo;
+    public $frontSide = [], $backSide = [], $status,
+    $frontSidePhoto = 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?t=st=1716804080~exp=1716807680~hmac=f544d7e2421c72cab962a627fa919c2d9a3849e1ccc759486401d83c64602064&amp;w=740',
+    $backSidePhoto = 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?t=st=1716804080~exp=1716807680~hmac=f544d7e2421c72cab962a627fa919c2d9a3849e1ccc759486401d83c64602064&amp;w=740';
 
     public $search;
 
@@ -38,7 +45,7 @@ class Cards extends Component
     protected function rules()
     {
         return [
-            'reason'        =>      ['required'],
+            'reason' => ['required'],
         ];
     }
 
@@ -59,6 +66,33 @@ class Cards extends Component
         $this->btnColor = 'bg-success';
         $this->body = 'You want to Activate Card!';
         $this->dispatch('confirm-popup');
+    }
+
+    public function viewCard($studentId, $cardId)
+    {
+        $this->cardId = $cardId;
+        $this->studentId = $studentId;
+        $template = Template::where('school_id', auth()->id())->first();
+        $this->schoolName = $template->name;
+        $this->schoolLogo = $template->logo;
+
+        $studentCard = StudentCard::find($cardId);
+        $this->frontSide = $studentCard->front_side;
+        $this->backSide = $studentCard->back_side;
+        $this->status = $studentCard->status;
+
+        if (!empty($this->frontSide)) {
+            if (isset($this->frontSide['photo'])) {
+                $this->frontSidePhoto = url('storage') . '/' . $this->frontSide['photo'];
+            }
+        }
+
+        if (!empty($this->backSide)) {
+            if (isset($this->backSide['photo'])) {
+                $this->backSidePhoto = url('storage') . '/' . $this->backSide['photo'];
+            }
+        }
+        $this->dispatch('view-popup');
     }
 
     public function activate()
@@ -85,6 +119,7 @@ class Cards extends Component
             'title' => 'Success',
             'text' => 'Card Actiavated Successfully',
         ]);
+        $this->dispatch('pending');
         $this->resetPage();
     }
 
@@ -138,8 +173,10 @@ class Cards extends Component
             'title' => 'Success',
             'text' => 'Card Deactivated Successfully',
         ]);
+        $this->dispatch('pending');
         $this->resetPage();
     }
+
 
     private function getData()
     {

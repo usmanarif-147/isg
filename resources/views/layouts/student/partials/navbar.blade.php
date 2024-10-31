@@ -9,7 +9,7 @@
                 <img src="{{ asset('student/images/menu-icon.svg') }}" class="img-fluid menu-image" alt="">
             </a> --}}
 
-            <div class="offcanvas offcanvas-start sidebar-bg" tabindex="-1" id="offcanvasExample"
+            {{-- <div class="offcanvas offcanvas-start sidebar-bg" tabindex="-1" id="offcanvasExample"
                 aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header mt-3 mx-3">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">
@@ -123,7 +123,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div>
             <div class="d-flex justify-content-between align-items-center gap-lg-5 gap-0">
@@ -131,7 +131,7 @@
                     <div class="d-flex gap-2 align-items-center">
                         <div>
                             <div class="profile-picture">
-                                <img src="https://img.freepik.com/free-photo/3d-illustration-teenager-with-funny-face-glasses_1142-50955.jpg?t=st=1716370291~exp=1716373891~hmac=fad32ad9d57ccce5539f45cc9ec53c2b9787ad6f5d8afa2ee78dca3275fa622b&amp;w=740"
+                                <img src="{{ auth()->user()->photo ? asset('storage/' . auth()->user()->photo) : 'https://img.freepik.com/free-photo/3d-illustration-teenager-with-funny-face-glasses_1142-50955.jpg?t=st=1716370291~exp=1716373891~hmac=fad32ad9d57ccce5539f45cc9ec53c2b9787ad6f5d8afa2ee78dca3275fa622b&amp;w=740' }}"
                                     class="img-fluid rounded-circle" alt="">
                             </div>
                         </div>

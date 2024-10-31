@@ -3,8 +3,10 @@
         @foreach ($backFormFields as $field)
             @if ($field['input_type'] == 'text')
                 <div class="col-12 col-lg-6">
-                    <input type="text" placeholder="{{ $field['placeholder'] }}" class="form-control"
-                        wire:model.live="backFormData.{{ $field['model'] }}">
+                    <label for="input-{{ $field['model'] }}"
+                        class="form-label">{{ $field['label'] ?? ucfirst($field['model']) }}</label>
+                    <input type="text" id="input-{{ $field['model'] }}" placeholder="{{ $field['placeholder'] }}"
+                        class="form-control" wire:model.live="backFormData.{{ $field['model'] }}">
                     @error('backFormData.' . $field['model'])
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -12,8 +14,10 @@
             @endif
             @if ($field['input_type'] == 'email')
                 <div class="col-12 col-lg-6">
-                    <input type="email" placeholder="{{ $field['placeholder'] }}" class="form-control"
-                        wire:model.live="backFormData.{{ $field['model'] }}">
+                    <label for="input-{{ $field['model'] }}"
+                        class="form-label">{{ $field['label'] ?? ucfirst($field['model']) }}</label>
+                    <input type="email" id="input-{{ $field['model'] }}" placeholder="{{ $field['placeholder'] }}"
+                        class="form-control" wire:model.live="backFormData.{{ $field['model'] }}">
                     @error('backFormData.' . $field['model'])
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -34,7 +38,10 @@
                         <span class="text-success">Click </span>to upload image
                     </p> --}}
                     <div class="col-12 col-lg-12">
-                        <input type="file" wire:model.live="backFormData.{{ $field['model'] }}">
+                        <label for="input-{{ $field['model'] }}"
+                            class="form-label">{{ $field['label'] ?? ucfirst($field['model']) }}</label>
+                        <input id="input-{{ $field['model'] }}" type="file"
+                            wire:model.live="backFormData.{{ $field['model'] }}">
                     </div>
                     @error('backFormData.' . $field['model'])
                         <span class="text-danger">{{ $message }}</span>
@@ -43,8 +50,10 @@
             @endif
             @if ($field['input_type'] == 'date')
                 <div class="col-12 col-lg-6">
-                    <input type="date" placeholder="{{ $field['placeholder'] }}" class="form-control"
-                        wire:model.live="backFormData.{{ $field['model'] }}">
+                    <label for="input-{{ $field['model'] }}"
+                        class="form-label">{{ $field['label'] ?? ucfirst($field['model']) }}</label>
+                    <input type="date" id="input-{{ $field['model'] }}" placeholder="{{ $field['placeholder'] }}"
+                        class="form-control" wire:model.live="backFormData.{{ $field['model'] }}">
                     @error('backFormData.' . $field['model'])
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -52,7 +61,10 @@
             @endif
             @if ($field['input_type'] == 'select')
                 <div class="col-12 col-lg-6">
-                    <select class="form-select" wire:model.live="backFormData.{{ $field['model'] }}">
+                    <label for="input-{{ $field['model'] }}"
+                        class="form-label">{{ $field['label'] ?? ucfirst($field['model']) }}</label>
+                    <select id="input-{{ $field['model'] }}" class="form-select"
+                        wire:model.live="backFormData.{{ $field['model'] }}">
                         <option value="-1">Select {{ $field['label'] }}</option>
                         @foreach ($field['options'] as $key => $option)
                             <option value="{{ $key }}">{{ $option }}</option>
@@ -66,7 +78,7 @@
         @endforeach
     </div>
     <button type="submit" class="btn btn-custom-bg text-white px-5 my-2"
-        {{ count($backFormFields) === 0 || $cardStatus == 2 ? 'disabled' : '' }}>
+        {{ count($backFormFields) === 0 || ($cardStatus == 1 || $cardStatus == 2 || $cardStatus == 3 || $cardStatus == 5) ? 'disabled' : 'enabled' }}>
         {{ trans('student.card.back_side') }}
     </button>
 </form>
