@@ -14,7 +14,7 @@
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
             <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
+                    <a class="nav-link {{ Request::routeIs('admin.dashboard') ? 'active' : '' }}"
                         href="{{ route('admin.dashboard') }}">
                         <span class="nav-icon">
                             <i class="fa-solid fa-gauge fs-5"></i>
@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.platforms') ? 'active' : '' }}"
+                    <a class="nav-link {{ Request::routeIs('admin.platforms', 'admin.platform.create', 'admin.platform.view') ? 'active' : '' }}"
                         href="{{ route('admin.platforms') }}">
                         <span class="nav-icon">
                             <i class="fa-solid fa-layer-group fs-5"></i>
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.schools') ? 'active' : '' }}"
+                    <a class="nav-link {{ Request::routeIs('admin.schools', 'admin.school.create', 'admin.school.view') ? 'active' : '' }}"
                         href="{{ route('admin.schools') }}">
                         <span class="nav-icon">
                             <i class="fa-solid fa-building-columns fs-5"></i>
@@ -41,8 +41,10 @@
                     </a>
                 </li>
                 <li class="nav-item has-submenu">
-                    <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse"
-                        data-bs-target="#submenu-2" aria-expanded="false" aria-controls="submenu-2">
+                    <a class="nav-link submenu-toggle {{ Request::routeIs('admin.change.password') ? 'text-success' : '' }}"
+                        href="#" data-bs-toggle="collapse" data-bs-target="#submenu-2"
+                        aria-expanded="{{ Request::routeIs('admin.change.password') ? 'true' : 'false' }}"
+                        aria-controls="submenu-2">
                         <span class="nav-icon">
 
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap"
@@ -62,10 +64,13 @@
                             </svg>
                         </span>
                     </a>
-                    <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
+                    <div id="submenu-2"
+                        class="collapse submenu submenu-2 {{ Request::routeIs('admin.change.password') ? 'show' : '' }}"
+                        data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
                             <li class="submenu-item">
-                                <a class="submenu-link" href="{{ route('admin.change.password') }}">
+                                <a class="submenu-link {{ Request::routeIs('admin.change.password') ? 'active text-success' : '' }}"
+                                    href="{{ route('admin.change.password') }}">
                                     Change Password
                                 </a>
                             </li>

@@ -12,6 +12,7 @@
     <title>{{ $title ?? 'ISG SCHOOL' }}</title>
 
     @include('layouts.school.partials.css')
+    {{-- @livewireStyles --}}
 </head>
 
 <body class="app">
@@ -29,6 +30,8 @@
     </div>
 
     @include('layouts.school.partials.js')
+    @yield('script')
+    {{-- @livewireScripts --}}
 </body>
 
 </html>

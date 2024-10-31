@@ -56,7 +56,6 @@ class Cards extends Component
 
         $frontSide = $studentCard->front_side;
         $backSide = $studentCard->back_side;
-
         foreach ($this->frontFormFields as $field) {
             $this->frontFormData[$field['model']] = '';
         }
@@ -116,11 +115,7 @@ class Cards extends Component
 
         $data = $data['frontFormData'];
 
-        if (isset($data['photo'])) {
-            $data['photo'] = Storage::disk('public')->put('/cards', $data['photo']);
-        } else {
-            $data['photo'] = null;
-        }
+        $data['photo'] = isset($data['photo']) ? Storage::disk('public')->put('/cards', $data['photo']) : null;
 
         StudentCard::where('student_id', auth()->id())->update([
             'front_side' => $data,
@@ -128,7 +123,7 @@ class Cards extends Component
         ]);
 
         $this->dispatch('swal:modal', [
-            'title' =>  'Success',
+            'title' => 'Success',
             'text' => 'Front Card Details Filled Successfully.',
             'icon' => 'success'
         ]);
@@ -140,11 +135,7 @@ class Cards extends Component
 
         $data = $data['backFormData'];
 
-        if (isset($data['photo'])) {
-            $data['photo'] = Storage::disk('public')->put('/cards', $data['photo']);
-        } else {
-            $data['photo'] = null;
-        }
+        $data['photo'] = isset($data['photo']) ? Storage::disk('public')->put('/cards', $data['photo']) : null;
 
         StudentCard::where('student_id', auth()->id())->update([
             'back_side' => $data,
@@ -152,7 +143,7 @@ class Cards extends Component
         ]);
 
         $this->dispatch('swal:modal', [
-            'title' =>  'Success',
+            'title' => 'Success',
             'text' => 'Back Card Details Filled Successfully.',
             'icon' => 'success'
         ]);

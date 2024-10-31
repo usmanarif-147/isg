@@ -194,7 +194,7 @@ if (!function_exists('getTemplateBackSide')) {
                     'placeholder' => '',
                     'options' => ['Male', 'Female'],
                     'model' => 'gender',
-                    'validation_rules' => 'required|not_in:0'
+                    'validation_rules' => 'required|not_in:-1'
                 ]
             ];
     }
@@ -321,7 +321,7 @@ if (!function_exists('get_blood_groups')) {
 
             "A-" => "A-",
             "A+" => "A+",
-            "B-"  => "B-",
+            "B-" => "B-",
             "B+" => "B+",
             "O-" => "O-",
             "O+" => "O+",

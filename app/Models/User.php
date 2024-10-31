@@ -28,6 +28,8 @@ class User extends Authenticatable
         'roll_number',
         'photo',
         'is_social_platform_allowed',
+        'clicks',
+        'terms_accepted',
         'password',
         'student_profile'
     ];
@@ -92,6 +94,16 @@ class User extends Authenticatable
     public function studentCard()
     {
         return $this->hasOne(StudentCard::class, 'student_id');
+    }
+
+    public function cardsHistory()
+    {
+        return $this->hasMany(StudentCardHistory::class, 'school_id');
+    }
+
+    public function studentCardHistory()
+    {
+        return $this->hasOne(StudentCardHistory::class, 'student_id');
     }
 
     public function announcements()

@@ -10,6 +10,8 @@ class Schools extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected $schools;
 
     public $schoolId;
@@ -139,46 +141,46 @@ class Schools extends Component
         $this->resetPage();
     }
 
-     private function getData()
-     {
-         $search = $this->search;
-         $status = $this->status;
-         $dateRange = $this->dateRange;
-         $query = User::withCount('students')
-             ->where('role', 2)
-             ->orderBy('created_at', 'desc');
-         if ($search) {
-             $query->where('email', 'like', "%$search%");
-         }
-         if ($status !== '') {
-             $query->where('status', $status);
-         }
-         if ($dateRange) {
-             $now = Carbon::now();
-             switch ($dateRange) {
-                 case '1':
-                     $startDate = $now->startOfWeek();
-                     $endDate = $now->endOfWeek();
-                     break;
-                 case '2':
-                     $startDate = $now->startOfMonth();
-                     $endDate = $now->endOfMonth();
-                     break;
-                 case '3':
-                     $startDate = $now->subMonths(3)->startOfMonth();
-                     $endDate = Carbon::now()->endOfMonth();
-                     break;
-                 default:
-                     $startDate = $endDate = null;
-             }
+    private function getData()
+    {
+        $search = $this->search;
+        $status = $this->status;
+        $dateRange = $this->dateRange;
+        $query = User::withCount('students')
+            ->where('role', 2)
+            ->orderBy('created_at', 'desc');
+        if ($search) {
+            $query->where('email', 'like', "%$search%");
+        }
+        if ($status !== '') {
+            $query->where('status', $status);
+        }
+        if ($dateRange) {
+            $now = Carbon::now();
+            switch ($dateRange) {
+                case '1':
+                    $startDate = $now->startOfWeek();
+                    $endDate = $now->endOfWeek();
+                    break;
+                case '2':
+                    $startDate = $now->startOfMonth();
+                    $endDate = $now->endOfMonth();
+                    break;
+                case '3':
+                    $startDate = $now->subMonths(3)->startOfMonth();
+                    $endDate = Carbon::now()->endOfMonth();
+                    break;
+                default:
+                    $startDate = $endDate = null;
+            }
 
-             if ($startDate && $endDate) {
-                 $query->whereBetween('created_at', [$startDate, $endDate]);
-             }
-         }
+            if ($startDate && $endDate) {
+                $query->whereBetween('created_at', [$startDate, $endDate]);
+            }
+        }
 
-         return $query->paginate(10);
-     }
+        return $query->paginate(10);
+    }
 
     public function render()
     {

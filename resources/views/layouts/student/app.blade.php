@@ -30,7 +30,9 @@
 
     @include('layouts.student.partials.js')
 
+    @livewireScripts
 
+    @yield('script')
 </body>
 
 </html>

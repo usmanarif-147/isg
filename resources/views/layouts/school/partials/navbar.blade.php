@@ -28,7 +28,8 @@
                         <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#"
                             role="button" aria-expanded="false">
                             @if (auth()->user()->photo)
-                                <img src="{{ asset(Storage::url(auth()->user()->photo)) }}" alt="user profile">
+                                <img class="rounded-circle" src="{{ asset(Storage::url(auth()->user()->photo)) }}"
+                                    alt="user profile">
                             @else
                                 <img src="{{ asset('admin/images/user.png') }}" alt="user profile">
                             @endif

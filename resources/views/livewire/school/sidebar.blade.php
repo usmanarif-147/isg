@@ -11,8 +11,8 @@
     <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
         <ul class="app-menu list-unstyled accordion" id="menu-accordion">
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
-                    href="{{ route('admin.dashboard') }}">
+                <a class="nav-link {{ Request::routeIs('school.dashboard') ? 'active' : '' }}"
+                    href="{{ route('school.dashboard') }}">
                     <span class="nav-icon">
                         <i class="fa-solid fa-gauge fs-5"></i>
                     </span>
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('school.students') ? 'active' : '' }}"
+                <a class="nav-link {{ Request::routeIs('school.students', 'school.student.create', 'school.student.view') ? 'active' : '' }}"
                     href="{{ route('school.students') }}">
                     <span class="nav-icon">
                         <i class="fa-solid fa-graduation-cap fs-5"></i>
@@ -30,7 +30,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('school.announcements') ? 'active' : '' }}"
+                <a class="nav-link {{ Request::routeIs('school.announcements', 'school.announcement.create', 'school.announcement.edit') ? 'active' : '' }}"
                     href="{{ route('school.announcements') }}">
                     <span class="nav-icon">
                         <i class="fa-solid fa-volume-high fs-5"></i>
@@ -40,7 +40,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('school.cards') ? 'active' : '' }}"
+                <a class="nav-link {{ Request::routeIs('school.cards') ? 'active' : '' }}"
                     href="{{ route('school.cards') }}">
                     <span class="nav-icon">
                         <i class="fa-solid fa-address-card fs-5"></i>
@@ -57,9 +57,29 @@
                     @endif
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::routeIs('school.studentRequests') ? 'active' : '' }}"
+                    href="{{ route('school.studentRequests') }}">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-bullhorn fs-5"></i>
+                    </span>
+                    <span class="nav-link-text">
+                        Student Requests
+                    </span>
+                    @if ($requestPending)
+                        <span class="submenu-arrow">
+                            <span class="badge text-bg-warning">
+                                {{ $requestPending }}
+                            </span>
+                        </span>
+                    @endif
+                </a>
+            </li>
             <li class="nav-item has-submenu">
-                <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-2"
-                    aria-expanded="false" aria-controls="submenu-2">
+                <a class="nav-link submenu-toggle {{ Request::routeIs('school.change.password', 'school.roll.number', 'school.template') ? 'text-success' : '' }}"
+                    href="#" data-bs-toggle="collapse" data-bs-target="#submenu-2"
+                    aria-expanded="{{ Request::routeIs('school.change.password', 'school.roll.number', 'school.template') ? 'true' : 'false' }}"
+                    aria-controls="submenu-2">
                     <span class="nav-icon">
                         <i class="fa-solid fa-sliders fs-5"></i>
                     </span>
@@ -73,20 +93,25 @@
                         </svg>
                     </span>
                 </a>
-                <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
+                <div id="submenu-2"
+                    class="collapse submenu submenu-2 {{ Request::routeIs('school.change.password', 'school.roll.number', 'school.template') ? 'show' : '' }}"
+                    data-bs-parent="#menu-accordion">
                     <ul class="submenu-list list-unstyled">
                         <li class="submenu-item">
-                            <a class="submenu-link" href="{{ route('school.change.password') }}">
+                            <a class="submenu-link {{ Request::routeIs('school.change.password') ? 'active text-success' : '' }}"
+                                href="{{ route('school.change.password') }}">
                                 Change Password
                             </a>
                         </li>
                         <li class="submenu-item">
-                            <a class="submenu-link" href="{{ route('school.roll.number') }}">
+                            <a class="submenu-link {{ Request::routeIs('school.roll.number') ? 'active text-success' : '' }}"
+                                href="{{ route('school.roll.number') }}">
                                 Set Roll Number Prefix
                             </a>
                         </li>
                         <li class="submenu-item">
-                            <a class="submenu-link" href="{{ route('school.template') }}">
+                            <a class="submenu-link {{ Request::routeIs('school.template') ? 'active text-success' : '' }}"
+                                href="{{ route('school.template') }}">
                                 Template
                             </a>
                         </li>

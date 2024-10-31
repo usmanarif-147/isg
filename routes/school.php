@@ -20,6 +20,9 @@ Route::middleware(['school'])->group(function () {
         Route::view('/announcement/create', 'school.announcement.create')->name('announcement.create');
         Route::view('/announcement/edit/{id}', 'school.announcement.edit')->name('announcement.edit');
 
+        //Student Requests
+        Route::view('/student-requests', 'school.student-requests.student-requests')->name('studentRequests');
+
         // setting
         Route::view('/settings/change-password', 'school.settings.change-password')->name('change.password');
         Route::view('/settings/roll-number-prefix', 'school.settings.roll-number')->name('roll.number');

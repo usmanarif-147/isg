@@ -12,6 +12,8 @@ class Announcements extends Component
 
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected $school_announcements;
 
     public $announcementId;

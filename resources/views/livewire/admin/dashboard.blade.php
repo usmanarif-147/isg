@@ -62,7 +62,8 @@
                                 @foreach ($schools as $school)
                                     <tr>
                                         <td class="cell">
-                                            <img src="{{ $school->photo ? asset('storage/' . $school->photo) : asset('admin/images/school-avatar.png') }}" height="60" width="70" alt="">
+                                            <img src="{{ $school->photo ? asset('storage/' . $school->photo) : asset('admin/images/school-avatar.png') }}"
+                                                height="60" width="70" alt="">
                                         </td>
                                         <td class="cell">
                                             {{ $school->name }}
@@ -88,37 +89,10 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
-            <nav class="app-pagination">
-                <ul class="pagination justify-content-center">
-                    @if ($schools->onFirstPage())
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                    @else
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $schools->previousPageUrl() }}">Previous</a>
-                        </li>
-                    @endif
-                    @foreach ($schools->links()->elements[0] as $page => $url)
-                        <li class="page-item {{ $page == $schools->currentPage() ? 'active' : '' }}">
-                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                        </li>
-                    @endforeach
-                    @if ($schools->hasMorePages())
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $schools->nextPageUrl() }}">Next</a>
-                        </li>
-                    @else
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-                        </li>
-                    @endif
-                </ul>
-            </nav>
         </div>
+        {{ $schools->links() }}
     </div>
 
 

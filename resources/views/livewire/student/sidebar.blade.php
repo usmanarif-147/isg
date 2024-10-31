@@ -19,14 +19,14 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'dashboard' ? 'text-white' : 'sidebar-link' }} m-0">
-                        {{trans('student.sidebar.dashboard')}}
+                        {{ trans('student.sidebar.dashboard') }}
                     </p>
                 </div>
             </div>
         </a>
         <a href="{{ route('student.profile') }}" class="text-decoration-none">
             <div class="d-flex align-items-center gap-3 my-4">
-                @if (request()->segment(1) == 'profile')
+                @if (in_array(request()->segment(1), ['profile', 'edit-profile']))
                     <div>
                         <img src="{{ asset('student/images/profile-icon-white.svg') }}" class="img-fluid"
                             alt="">
@@ -37,8 +37,9 @@
                     </div>
                 @endif
                 <div>
-                    <p class="{{ request()->segment(1) == 'profile' ? 'text-white' : 'sidebar-link' }} m-0">
-                        {{trans('student.sidebar.profile')}}
+                    <p
+                        class="{{ in_array(request()->segment(1), ['profile', 'edit-profile']) ? 'text-white' : 'sidebar-link' }} m-0">
+                        {{ trans('student.sidebar.profile') }}
                     </p>
                 </div>
             </div>
@@ -56,14 +57,14 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'share' ? 'text-white' : 'sidebar-link' }} m-0">
-                        {{trans('student.sidebar.share')}}
+                        {{ trans('student.sidebar.share') }}
                     </p>
                 </div>
             </div>
         </a>
         <a href="{{ route('student.product') }}" class="text-decoration-none">
             <div class="d-flex align-items-center gap-3 my-4">
-                @if (request()->segment(1) == 'product')
+                @if (in_array(request()->segment(1), ['product', 'card']))
                     <div>
                         <img src="{{ asset('student/images/product-icon-white.svg') }}" class="img-fluid"
                             alt="">
@@ -74,8 +75,9 @@
                     </div>
                 @endif
                 <div>
-                    <p class="{{ request()->segment(1) == 'product' ? 'text-white' : 'sidebar-link' }} m-0">
-                        {{trans('student.sidebar.product')}}
+                    <p
+                        class="{{ in_array(request()->segment(1), ['product', 'card']) ? 'text-white' : 'sidebar-link' }} m-0">
+                        {{ trans('student.sidebar.product') }}
                     </p>
                 </div>
             </div>
@@ -95,7 +97,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'notification' ? 'text-white' : 'sidebar-link' }} m-0">
-                        {{trans('student.sidebar.notification')}}
+                        {{ trans('student.sidebar.notification') }}
                     </p>
                 </div>
                 @if ($unreadNotifications)
@@ -120,7 +122,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'announcement' ? 'text-white' : 'sidebar-link' }} m-0">
-                        {{trans('student.sidebar.announcement')}}
+                        {{ trans('student.sidebar.announcement') }}
                     </p>
                 </div>
                 @if ($totalNewAnnouncements)
@@ -144,7 +146,7 @@
                 @endif
                 <div>
                     <p class="{{ request()->segment(1) == 'setting' ? 'text-white' : 'sidebar-link' }} m-0">
-                        {{trans('student.sidebar.settings')}}
+                        {{ trans('student.sidebar.settings') }}
                     </p>
                 </div>
             </div>
@@ -160,7 +162,7 @@
                     </div>
                     <div>
                         <p class="sidebar-link m-0">
-                            {{trans('student.sidebar.logout')}}
+                            {{ trans('student.sidebar.logout') }}
                         </p>
                     </div>
                 </div>

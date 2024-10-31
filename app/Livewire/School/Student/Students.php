@@ -10,6 +10,8 @@ class Students extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     protected $students;
 
     public $studentId;
